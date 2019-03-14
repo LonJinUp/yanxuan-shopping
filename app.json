@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/SecondaryPage/Productlist/index",
-    "pages/buy/index",
+    "pages/SecondaryPage/Settlement/index",
     "pages/SecondaryPage/product/index",
+    "pages/buy/index",
+    "pages/SecondaryPage/Productlist/index",
     "pages/index/index",
     "pages/class/index",
     "pages/my/index"

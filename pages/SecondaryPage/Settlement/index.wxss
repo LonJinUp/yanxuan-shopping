@@ -1,0 +1,323 @@
+/* pages/SecondaryPage/Settlement/index.wxss */
+.border{
+  width:100%;
+  height:16rpx;
+  background:rgba(246,246,246,1);
+}
+/* Address */
+.add-Address{
+  width: 100%;
+  height: 100%;
+  line-height: 120rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:#000;
+}
+.Address{
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+.Address .left{
+  width: 90%;
+  height:100%;
+}
+.Address .left .top{
+  width: 100%;
+  /* height: 30rpx; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10rpx;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.Address .left .top .name{
+  width: 50%;
+  height: 100%;
+}
+.Address .left .top .phone{
+  /* width:155rpx; */
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height: 30rpx;
+}
+.Address .left .top .name text:first-child{
+  font-size:28rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:600;
+  color:rgba(0,0,0,1);
+  margin-right: 30rpx;
+}
+.Address .left .top .name text:last-child{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:34rpx;
+}
+.Address .left .bottom{
+  width:100%;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:34rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.Address .right{
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Address .right image{
+  width: 12rpx;
+  height: 22rpx;
+}
+/* Address end */
+
+/* Product list */
+.Product-list{
+  width: 100%;
+  height: auto;
+}
+.product{
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+.product .title{
+  width:100%;
+  font-size:28rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:600;
+  color:rgba(0,0,0,1);
+  line-height:34rpx;
+  margin-top: 40rpx;
+}
+.product .content{
+  width:100%;
+  height:140rpx;
+  margin-top: 30rpx;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.product .content:last-child{
+  margin-bottom: 40rpx;
+}
+.product .content .left{
+  width:140rpx;
+  height:140rpx;
+  border:1rpx solid rgba(238, 238, 238, 1);
+  border-radius:6rpx;
+  box-sizing: border-box;
+  padding:1rpx;
+}
+.product .content .left image{
+  width: 100%;
+  height: 100%;
+  border-radius:6rpx;
+}
+.product .content .right{
+  width: 516rpx;
+  height: 100%;
+}
+.product .content .right .name{
+  width:517rpx;
+  height:64rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Light;
+  font-weight:300;
+  color:rgba(102,102,102,1);
+  line-height:34rpx;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2; 
+}
+.product .content .right .size text:first-child{
+  width:134rpx;
+  height:20rpx;
+  font-size:20rpx;
+  font-family:PingFangSC-Light;
+  font-weight:300;
+  color:rgba(187,187,187,1);
+  line-height:34rpx;
+}
+.product .content .right .price {
+  width:100%;
+  height:19rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.product .content .right .price text{
+  font-size:26rpx;
+  font-family:DINCond-Black;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+  line-height:34rpx;
+
+}
+/* Product list end */
+
+/* coupon */
+.coupon{
+  width:100%;
+  height:100rpx;
+  background:rgba(255,255,255,1);
+  box-sizing: border-box;
+  padding:0 28rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.coupon .left{
+  width:77rpx;
+  height:25rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+}
+
+.coupon .right{
+  display: flex;
+  align-items: center;
+}
+.coupon .right image{
+  display: block;
+  float: right;
+  width: 12rpx;
+  height: 22rpx;
+}
+.coupon .right .choose{
+  float: right;
+  height:38rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(255,16,16,1);
+  margin-right: 20rpx;
+}
+.coupon .right .choose.active{
+   color:rgba(187,187,187,1);
+}
+/* coupon end */
+
+/* message */
+.message{
+  width:100%;
+  height:100rpx;
+  background:rgba(255,255,255,1);
+  box-sizing: border-box;
+  padding: 0 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid rgba(246,246,246,1);
+}
+.message .left{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+}
+.message .right{
+ font-size:26rpx;
+ font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+}
+.invoice{
+  width:100%;
+  height:100rpx;
+  background:rgba(255,255,255,1);
+  border-bottom: 1rpx solid rgba(246,246,246,1);
+  box-sizing: border-box;
+  padding: 0 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.invoice .right{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+  display: flex;
+  align-items: center;
+  
+}
+.invoice .left{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+}
+.invoice .right image{
+  width: 12rpx;
+  height: 22rpx;
+  float: right;
+}
+.invoice .right text{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  margin-right: 20rpx;
+}
+/* message end */
+
+/* pay */
+.pay{
+  width: 100%;
+  height:140rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 27px 0px rgba(0, 0, 0, 0.03);
+  position: fixed;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pay .left text:first-child{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+}
+.pay .left text:last-child{
+ /* font-size:26rpx; */
+  font-family:PingFangSC-Regular;
+  font-weight:600;
+  color:#FF1010;
+}
+.pay .right{
+  width:300rpx;
+  height:72rpx;
+  background:linear-gradient(-30deg,rgba(251,91,34,1),rgba(255,16,16,1));
+  border-radius:36rpx;
+  text-align: center;
+  line-height: 72rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+
+}
+/* pay end */

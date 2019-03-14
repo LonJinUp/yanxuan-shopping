@@ -95,7 +95,7 @@
 
 <!-- choose -->
 <view class='choose'>
-  <view class='left'>
+  <view class='left' bindtap='ShowShare'>
     <text>{{choose==false?"请选择:":"已选择:"}}</text>
     <text>均码;</text>
     <text>x3</text>
@@ -180,11 +180,55 @@
     <image src='../../../images/tabBar/index.png'></image>
     <view class='text'>进店铺</view>
   </view>
-   <view class='home'>
-      <image src='../../../images/tabBar/buy.png'></image>
-      <view class='text'>进店铺</view>
+   <view class='home' style='position: relative;'>
+      <image src='../../../images/tabBar/buy.png'>
+      </image>
+      <view class='text'>购物车</view>
+       <view class='home-num'>10</view>
    </view>
    <view class='buy'>购买</view>
    <view class='share'>卖 (赚￥187.23)</view>
 </view>
 <!-- bottom-btn end-->
+
+<!-- showModal -->
+<view class='showModal-box' wx:if='{{ShowShare}}' bindtap='HideShare'></view>
+<view class='showModal' wx:if='{{ShowShare}}'>
+  <view class='clone' bindtap='HideShare'>
+    <image src='../../../images/guanbi.png'></image>
+  </view>
+  <view class='product-small-pic'>
+    <image src='../../../images/shanchu/banner.jpg'></image>
+  </view>
+  <view class='product-title'>
+    <view class='title'>Converse Chuck 70 拼色 粉紫绿橙 紫
+丁香</view>
+    <view class='money-box'>
+      <text class='first'>￥237</text>
+      <text class='first2'>229</text>
+    </view>
+  </view>
+  <!-- border -->
+  <view class='border'></view>
+  <!-- border end -->
+  <view class='size-box'>
+    <view class='title'>尺码</view>
+    <view class='size-item'>
+      <view class='items'>S</view>
+      <view class='items'>SXX</view>
+    </view>
+  </view>
+  <view class='number-box'>
+    <view class='title'>数量</view>
+    <view class='buynum'>
+            <view class='minus {{BuyNumber>1? "active" :" "}}' bindtap='minus' data-index="{{index}}">-</view>
+            <view class='num'>{{BuyNumber}}</view>
+            <view class='add active' bindtap='add' data-index="{{BuyNumber}}">+</view>
+          </view>
+  </view>
+  <view class='bottom-box'>
+    <view class='left'>加入购物车</view>
+    <view class='right'>立即购买</view>
+  </view>
+</view>
+<!-- showModal end -->

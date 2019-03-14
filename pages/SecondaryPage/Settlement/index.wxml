@@ -1,0 +1,95 @@
+<!-- Address information -->
+<view class='Address'>
+<block wx:if='{{Address}}'>
+  <view class='left'>
+    <view class='top'>
+      <view class='name'>
+        <text>收件人</text>
+        <text>老王</text>
+      </view>
+      <view class='phone'>
+        18534573722
+      </view>
+    </view>
+    <view class='bottom'>北京市  北京市  大兴区  西红门地区  嘉悦广场8号楼88</view>
+  </view>
+  <view class='right'>
+    <image src='../../../images/prev.png'></image>
+  </view>
+  </block>
+  <block wx:else>
+    <view class='add-Address' bindtap='Address'>
+      你还没有地址,点击添加
+    </view>
+  </block>
+</view>
+<!-- Address information end -->
+<view class='border'></view>
+<!-- Product list  -->
+<view class='Product-list'>
+  <view class='product'>
+    <view class='title'>商品清单</view>
+    <view class='content'>
+      <view class='left'>
+        <image src='../../../images/shanchu/content.png'></image>
+      </view>
+      <view class='right'>
+        <view class='name'>Converse Chuck 70 拼色 粉紫绿橙 紫丁香全球限量款</view>
+        <view class='size'>
+          <text>经典款 | 40码</text>
+        </view>
+        <view class='price'>
+          <text>￥300</text>
+          <text>x1</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+</view>
+<!-- Product list end -->
+<view class='border'></view>
+<!-- coupon -->
+<view class='coupon'>
+  <view class='left'>优惠券</view>
+  <view class='right'>
+    <view class='choose {{coupon==true?"":"active"}}'>{{coupon==true?"请选择优惠券":"暂无优惠券"}}</view>
+    <image src='../../../images/prev.png'></image>
+  </view>
+</view>
+<!-- coupon end -->
+<view class='border'></view>
+<!-- message -->
+<view class='message'>
+  <view class='left'>商品总额</view>
+  <view class='right'>￥996.00</view>
+</view>
+<view class='message'>
+  <view class='left'>运费</view>
+  <view class='right'>￥000.00</view>
+</view>
+<view class='message'>
+  <view class='left'>优惠</view>
+  <view class='right'>￥000.00</view>
+</view>
+<!-- message end -->
+<view class='border'></view>
+<!-- invoice -->
+<view class='invoice'>
+  <view class='left'>开具发票</view>
+  <view class='right'>
+   <text>不开发票</text>
+    <image src='../../../images/prev.png'></image>
+  </view>
+</view>
+<!-- invoice end -->
+<view style='width:100%;height:300rpx;'></view>
+<!-- pay -->
+<view class='pay'>
+  <view class='left'>
+    <text>应付</text>
+    <text>￥998</text>
+  </view>
+  <view class='right'>微信支付</view>
+</view>
+<!-- pay end -->
