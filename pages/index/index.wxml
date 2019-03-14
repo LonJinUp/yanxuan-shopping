@@ -1,0 +1,178 @@
+<!--index.wxml-->
+<!--pages/index/index.wxml-->
+
+<!-- 登录后 首页全部内容 -->
+  <!-- swiper -->
+<swiper indicator-dots next-margin='100rpx' circular autoplay='true' interval='3000' duration='600' style='background:#fff;padding-top:10rpx'>
+  <swiper-item>
+    <view class='item'>
+      <image src='../../images/banner-1.png'></image>
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view class='item'>
+       <image src='../../images/banner-1.png'></image>
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view class='item'>
+       <image src='../../images/banner-1.png'></image>
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view class='item'>
+       <image src='../../images/banner-1.png'></image>
+    </view>
+  </swiper-item>
+</swiper>
+<!-- swiper end -->
+
+  <!-- Features -->
+  <view class='Features'>
+    <view class='Features-item'>
+      <view class='Features-icon'>
+        <image src='../../images/recommend.png'></image>
+      </view>
+    </view>
+    <view class='Features-item'>
+      <view class='Features-icon'>
+        <image src='../../images/invite.png'></image>
+      </view>
+    </view>
+    <view class='Features-item'>
+      <view class='Features-icon'>
+        <image src='../../images/Check.png'></image>
+      </view>
+    </view>
+    <view class='Features-item'>
+      <view class='Features-icon'>
+        <image src='../../images/Newcomer.png'></image>
+      </view>
+    </view>
+    <view class='Features-item'>
+      <view class='Features-icon'>
+        <image src='../../images/material.png'></image>
+      </view>
+    </view>
+  </view>
+  <!-- Features end -->
+
+  <!-- Notice -->
+  <view class='Notice'>
+    <view class='Notice-icon'>
+      <image src='../../images/Notice-icon.png'></image>
+    </view>
+    <view class='Notice-con'>
+      <image class='Notice-small-ico' src='../../images/laba.png'></image>
+      <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+        <block wx:for="{{msgList}}">
+          <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+            <swiper-item>
+              <view class="swiper_item">{{item.title}}</view>
+            </swiper-item>
+          </navigator>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <!-- Notice end -->
+
+<!-- activity -->
+<view class='activity'>
+  <view class='activity-item activity-background-1'>
+    <view class='activity-top'>
+      <view class='left'>
+        <view class='top-title'>
+          <text class='title'>限时秒杀</text>
+          <text class='iconfont right-icon'></text>
+        </view>
+        <view class='title-small'>每日爆款限时抢</view>
+      </view>
+      <view class='right'>
+        <text class='iconfont time'></text>
+        <text class='clock'>{{clock}}</text>
+      </view>
+    </view>
+    <view class='content'>
+      <view class='left'>
+        <view class='Triangle'></view>
+      </view>
+    </view>
+  </view>
+
+  <view class='activity-item activity-background-1'>
+    <view class='activity-top'>
+      <view class='left'>
+        <view class='top-title'>
+          <text class='title'>限时秒杀</text>
+          <text class='iconfont right-icon'></text>
+        </view>
+        <view class='title-small'>每日爆款限时抢</view>
+      </view>
+      <view class='right'>
+        <text class='iconfont time'></text>
+        <text class='clock'>{{clock}}</text>
+      </view>
+    </view>
+    <view class='content'>
+      <view class='left'>
+        <view class='Triangle'></view>
+      </view>
+    </view>
+  </view>
+
+   <view class='activity-item activity-background-3'>
+    <view class='activity-top'>
+      <view class='left'>
+        <view class='top-title'>
+          <text class='title'>本周爆品推荐</text>
+          <text class='iconfont right-icon'></text>
+        </view>
+        <view class='title-small'>千万好货 尽在全民严选</view>
+      </view>
+      <view class='right'>
+        <text class='iconfont time'></text>
+        <text class='clock'>{{clock}}</text>
+      </view>
+    </view>
+    <view class='content content-3'>
+      <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" class='good-stuff' >
+          <view class='item' wx:for='{{goods}}'>
+            <image src='{{item.pic}}'></image>
+            <view class='title'>{{item.name}}</view>
+            <view class='money-box'>
+              <view class='money'>￥{{item.money}}</view>
+              <view class='makemoney'>赚{{item.makemoney}}</view>
+            </view>
+          </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+<!-- activity end -->
+
+<!-- commodity -->
+<view class='commodity'>
+  <view class='title'>
+    <image src='../../images/aixin.png'></image>
+    <text>严选好物</text>
+  </view>
+  <!-- content -->
+  <view class='content'>
+    <view class='item' wx:for="{{commodity}}">
+      <image src='{{item.pic}}'>
+        <view class='share'>分享赚</view>
+      </image>
+      <text class='commodity-title'>{{item.name}}</text>
+      <view class='commodity-money'>
+        <text>￥{{item.money}}</text>
+        <text>赚{{item.makemoney}}</text>
+        <text>{{item.Purchased}}人已购买</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- commodity end -->
+
+
+

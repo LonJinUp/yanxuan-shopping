@@ -1,0 +1,317 @@
+page {
+  font-family: [PingFangSC];
+  background: #f4f4f4;
+  height: 100%;
+
+  /* padding-top: 20rpx; */
+}
+.top-box{
+  width: 100%;
+  height: 68rpx;
+  box-sizing: border-box;
+  padding:0 30rpx;
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  line-height: 68rpx;
+  font-weight: 600;
+  background: #ffd1d2;
+}
+.top-box image{
+  width: 52rpx;
+  height: 52rpx;
+  margin-right: 14rpx;
+}
+
+view {
+  box-sizing:border-box;
+}
+.topnav {
+  padding: 0 74rpx;
+  width: 100%;
+  height: 79rpx;
+  background: #f4f4f4;
+  font-size: 24rpx;
+  line-height: 79rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.topnav view {
+  display: flex;
+  align-items: center;
+}
+
+.topnav view text {
+  font-size: 60rpx;
+  font-weight: bold;
+}
+
+.shoppingCartMain .shoppingCartMainList {
+  height: 220rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #bbbbbb;
+  position: relative;
+  overflow: hidden;
+}
+
+.innerText {
+  display: flex;
+  background: #fff;  
+  align-items: center;
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  width:100%;
+  height:100%;
+}
+/*  重写 checkbox 样式  */
+/* 未选中的 背景样式 */
+checkbox .wx-checkbox-input{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx; /* 背景的宽 */
+   height: 40rpx; /* 背景的高 */
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+   border: none;
+   background: #000;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  box-sizing: border-box;
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+.innerDel {
+  position: absolute;
+  top: 0;
+  background-color: #e64340;
+  width: 180rpx;
+  height: 100%;
+  text-align: center;
+  z-index: 4;
+  right: 0;
+  color: #fff;
+  line-height:222rpx;
+  font-size:30rpx;
+}
+
+.shoppingCartMainList image {
+  width: 142rpx;
+  height: 142rpx;
+  margin-left: 20rpx;
+  /* background: skyblue; */
+  border:1rpx solid #eeeeee;
+  border-radius: 4rpx;
+}
+
+.shoppingCartMainListMsg {
+  width: 460rpx;
+  height: 100%;
+  margin-left: 14rpx;
+}
+
+.shoppingCartMainListMsg .one {
+  margin-top: 20rpx;
+}
+
+.shoppingCartMainListMsg .type {
+  font-size: 28rpx;
+  color: #e47174;
+  margin-right: 14rpx;
+  font-weight: bold;
+}
+
+.shoppingCartMainListMsg .name {
+  display: block;
+  font-size: 26rpx;
+  color: #282828;
+  font-weight: bold;
+  /* height: 60rpx; */
+  box-sizing: border-box;
+  padding-top:12rpx;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+ display:-webkit-box; 
+ -webkit-box-orient:vertical;
+ -webkit-line-clamp:2;    
+}
+
+.shoppingCartMainListMsg .spec {
+  height: 36rpx;
+  color: #cdcdcd;
+  padding: 0 10rpx;
+  font-size: 22rpx;
+  line-height: 36rpx;
+  display: inline-block;
+}
+
+.shoppingCartMainListMsg .price {
+  color: #000;
+  font-size: 26rpx;
+  font-weight: 600;
+  margin-top: 10rpx;
+  float: left;
+}
+
+.shoppingCartMainListMsg .abstract {
+  font-size: 24rpx;
+}
+
+.shoppingCartMainListMsg  .buynum {
+  width: 244rpx;
+  height: 52rpx;
+  float: right;
+  
+}
+
+.buynum .minus, .buynum .add {
+  width: 72rpx;
+  height: 100%;
+  border: 1rpx solid#eeeeee;
+  float: left;
+  color: #bbbbbb;
+  text-align: center;
+  line-height: 50rpx;
+
+}
+.buynum .add{
+    border-top-right-radius: 25rpx;
+  border-bottom-right-radius: 25rpx;
+}
+.buynum .minus{
+    border-top-left-radius: 25rpx;
+  border-bottom-left-radius: 25rpx;
+}
+
+.buynum .minus.active, .buynum .add.active {
+  border: 1rpx solid #bbbbbb;
+  color: #000;
+}
+
+.buynum .minus, .buynum .minus.active {
+  border-right: none;
+}
+
+.buynum .add, .buynum .add.active {
+  border-left: none;
+}
+
+.buynum .num {
+  width: 100rpx;
+  height: 100%;
+  border: 1rpx solid #bbbbbb;
+  text-align: center;
+  line-height: 50rpx;
+  float: left;
+  font-size: 30rpx;
+}
+
+.bottom {
+  width: 100%;
+  height: 95rpx;
+  background: #fafafa;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottommsg {
+  width: 526rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selectbox {
+  width: 33rpx;
+  height: 33rpx;
+  border: 1rpx solid #f84064;
+  border-radius: 6rpx;
+  margin-left: 27rpx;
+  text-align: center;
+  line-height: 20rpx;
+}
+
+.bottommsgleft {
+  display: flex;
+  align-items: center;
+}
+
+.selecttext {
+  font-size: 26rpx;
+  color: #646464;
+  margin-left: 20rpx;
+}
+
+.selectprice {
+  font-size: 30rpx;
+  color: #000;
+  margin-right: 29rpx;
+  float: right;
+}
+.selectprice2{
+  font-weight: bold;
+   float: right;
+}
+.selectprice.active{
+  color: #bbbbbb;
+}
+.buybtn.active{
+   background: #EEEEEE;
+}
+
+.buybtn {
+  width: 224rpx;
+  height: 100%;
+  background-image: linear-gradient(to right , #FF6C13, #FF281A);
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 95rpx;
+  color: #fff;
+}
+
+checkbox {
+  margin-left: 27rpx;
+  display: block;
+  /* padding-left: 27rpx; */
+  line-height:200rpx; 
+  width: 50rpx;
+}
+
+.no_car {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.no_car image {
+  width: 468rpx;
+}
+
+.no_car view {
+  width: 330rpx;
+  height: 76rpx;
+  background: #e47174;
+  text-align: center;
+  line-height: 76rpx;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 16rpx;
+  margin-top: 60rpx;
+}

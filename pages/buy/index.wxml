@@ -1,0 +1,48 @@
+<view class='top-box'>
+  <image src='../../images/aixin.png'></image>
+  你正在浏览我的店铺
+</view>
+
+<scroll-view class='shoppingCartMain' scroll-y="true" style='height:{{windowHeight-79-92}}rpx' wx:if="{{cartItems.length>0}}">
+  <block wx:for="{{cartItems}}" wx:key="key">
+    <view class='shoppingCartMainList'>
+      <view class='innerText' bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}">
+        <checkbox class="ws-checkbox"bindtap='isSelect' checked="{{item.isSelect}}" data-index="{{index}}" />
+        <image src='{{ApiRootUrl}}{{item.thumbnail}}'></image>
+        <view class='shoppingCartMainListMsg'>
+          <view class='one textoverflow'>
+            <text class='name'>{{item.name}}</text>
+          </view>
+          <!-- <view class='abstract textoverflow'>{{item.caption}}</view> -->
+
+          <view style='height:52rpx;'>
+            <view wx:if="{{item.specifications.length>0}}" class='spec'>{{item.specifications}}</view>
+          </view>
+          <view class='price'>￥{{item.price}}</view>
+          <view class='buynum'>
+            <view class='minus {{item.quantity>1? "active" :" "}}' bindtap='minus' data-index="{{index}}">-</view>
+            <view class='num'>{{item.quantity}}</view>
+            <view class='add active' bindtap='add' data-index="{{index}}">+</view>
+          </view>
+        </view>
+      </view>
+
+      <view bindtap='remove' data-index="{{index}}" class='innerDel'>删除</view>
+    </view>
+
+
+  </block>
+</scroll-view>
+<view class='bottom' wx:if="{{cartItems.length>0}}">
+  <view class='bottommsg'>
+    <view class='bottommsgleft'>
+      <checkbox bindtap='allSelect' checked="{{isAllSelect}}" />
+      <text class='selecttext'>全选({{selNum}})</text>
+    </view>
+  <text class='selectprice {{selNum==0? "active" :" "}}'>
+      <block>合计 </block>
+      <block style='font-weight: bold;'>￥{{selPrice}}</block>
+    </text>
+  </view>
+  <view class='buybtn {{selNum==0?"active" :" "}}' bindtap='buy'>结算</view>
+</view>

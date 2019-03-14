@@ -1,0 +1,127 @@
+<!--pages/SecondaryPage/Productlist/index.wxml-->
+
+
+<block wx:if="{{filter==false}}">
+  <!-- top -->
+<view class='filter'>
+  <view class='items'>
+    <text class='text'>价格</text>
+    <view class='arrow'>
+      <image src='../../../images/top.png'></image>
+      <image src='../../../images/bottom.png'></image>
+    </view>
+  </view>
+  <view class='items'>
+    <text class='text'>利润</text>
+    <view class='arrow'>
+      <image src='../../../images/top.png'></image>
+      <image src='../../../images/bottom.png'></image>
+    </view>
+  </view>
+  <view class='items' bindtap='ShowFilter'>
+    <text class='text'>筛选</text>
+    <view class='filter-item'>
+      <image src='../../../images/shaixuan.png'></image>
+    </view>
+  </view>
+  <view class='items' bindtap='ChangeList' data-change='{{ChangeList}}'>
+    <image class='class' src='{{ChangeList==true?"../../../images/fenlei-3.png":"../../../images/fenlei2.png"}}'></image>
+  </view>
+</view>
+<!-- top end -->
+
+<!-- list1 -->
+<view class='list-box' wx:if='{{ChangeList==true}}'>
+<block wx:for='{{list}}'>
+  <navigator>
+    <view class='list-items'>
+      <view class='left'>
+        <image src='{{item.pic}}'></image>
+      </view>
+      <view class='right'>
+        <view class='title'>{{item.name}}</view>
+        <view class='price-box'>
+          <view class='price'>￥{{item.money}}</view>
+          <view class='original-price'>￥{{item.money2}}</view>
+        </view>
+        <view class='share-btn' catchtap='ShowShare' data-money="{{item.zhuan}}">分享赚￥{{item.zhuan}}</view>
+      </view>
+    </view>
+  </navigator>
+</block>
+</view>
+<!-- list1 end --> 
+
+<!-- list2 -->
+<view class='commodity' wx:if="{{ChangeList!=true}}">
+  <!-- content -->
+  <view class='content'>
+    <view class='item' wx:for="{{list}}">
+      <image src='{{item.pic}}'></image>
+      <text class='commodity-title'>{{item.name}}</text>
+      <view class='price-box' style='margin-top:10rpx;'>
+          <view class='price'>￥{{item.money}}</view>
+          <view class='original-price'>￥{{item.money2}}</view>
+      </view>
+      <view class='list2-share-btn' catchtap='ShowShare' data-money="{{item.zhuan}}">分享赚￥{{item.zhuan}}</view>
+    </view>
+  </view>
+</view>
+<!-- lsit2 end -->
+
+<!-- showModal -->
+<view class='showModal-box' wx:if='{{ShowShare}}' bindtap='HideShare'></view>
+<view class='showModal' wx:if='{{ShowShare}}'>
+  <view class='clone' bindtap='HideShare'>
+    <image src='../../../images/guanbi.png'></image>
+  </view>
+  <view class='money-box'>
+    <view class='money-text'>赚</view>
+    <view class='money-icon'>￥</view>
+    <view class='money-val'>{{ShareMoney}}</view>
+  </view>
+  <view class='Description'>任何人通过此链接成功购买商品，您都能赚钱！ （收益仅自己可见）</view>
+  <view class='share-box'>
+    <view class='share-left'>
+      <image src='../../../images/weixin.png'></image>
+      <view class='WeChat'>分享给好友</view>
+    </view>
+    <view class='share-right'>
+      <image src='../../../images/haibao.png'></image>
+      <view class='WeChat'>保存海报</view>
+    </view>
+  </view>
+</view>
+<!-- showModal end -->
+</block>
+
+
+<!-- filter -->
+<view class='filter-show' wx:if='{{filter==true}}'>
+    <view class='filter-title'>
+      <text class='big'>价格区间</text>
+      <text class='small'>(元)</text>
+    </view>
+    <view class='filter-input'>
+      <input type='digit'placeholder='最低价'></input>
+      <text></text>
+      <input type='digit' placeholder='最高价'></input>
+    </view>
+    <view class='Search'>
+       <view class='filter-title'>
+        <text class='big'>价格区间</text>
+       </view>
+       <view class='content'>
+        <view class='items'>耐克</view>
+        <view class='items'>耐克</view>
+        <view class='items'>耐克</view>
+        <view class='items'>耐克</view>
+        <view class='items'>耐克</view>
+       </view>
+    </view>
+    <view class='bottom-btn'>
+      <view class='left'>重置</view>
+      <view class='right'>确认</view>
+    </view>
+</view>
+<!-- filter end -->

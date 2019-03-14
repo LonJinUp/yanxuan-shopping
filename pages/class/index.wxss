@@ -1,0 +1,114 @@
+/* pages/class/index.wxss */
+page{
+  font-family: [PingFangSC];
+  width: 100%;
+  height: 100%;
+}
+.class{
+  position: relative; 
+ width: 100%; 
+ height: 100%; 
+ background-color: #fff; 
+ overflow: hidden;
+}
+.class-left{ 
+ display: inline-block; 
+ width: 25%; 
+ height: 100%; 
+ background: #eeeeee; 
+ text-align: center; 
+} 
+.class-left .item{
+ height:98rpx; 
+ line-height:98rpx; 
+ font-size: 26rpx;
+
+ width: 100%;
+ overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+display: flex;
+align-items: center;
+justify-content: center;
+box-sizing: border-box;
+color: #bbbbbb;
+text-align: center;
+
+
+}
+.class-left .item.active{ 
+ background: #fff; 
+ font-size: 28rpx;
+ font-weight: bold;
+ padding-left: 30rpx;
+ color: #000;
+ justify-content:normal;
+} 
+.line.active2{
+   margin-right:20rpx;
+}
+.class-right{ 
+ position: absolute; 
+ top: 0; 
+ right: 0; 
+ flex: 1; 
+ width: 75%; 
+ height: 100%; 
+ box-sizing: border-box; 
+ padding: 20rpx 30rpx 0 60rpx;
+ background: #fff; 
+} 
+.class-right .item{
+  width: 100%;
+  height: auto;  
+}
+.class-item-title{
+  width: 100%;
+  height: 26rpx;
+  font-weight: bold;
+  font-size: 26rpx;
+  margin-bottom: 32rpx;
+}
+.class-right .item .content{
+  width: 100%;
+  height: auto;
+}
+.class-right .item .content .items{
+ float: left; 
+ width: 140rpx; 
+ height: 192rpx; 
+ text-align: center;
+ margin-right: 20rpx;
+ border-radius: 4rpx;
+}
+.class-right .item .content .items:last-child{
+  margin-right: 0;
+}
+.content-image{
+  display: block;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 4rpx;
+}
+.class-right .item .content .text{
+  text-align: center;
+  color: #bbbbbb;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  margin-top: 12rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.line{
+  float: left;
+  display:blcok;
+  width: 12rpx;
+  height: 70rpx;
+  background: red;
+  border-top-right-radius: 8rpx;
+  border-top-left-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+  border-bottom-left-radius: 8rpx;
+  margin-right: 30rpx;
+}

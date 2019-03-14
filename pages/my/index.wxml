@@ -1,0 +1,206 @@
+<!--pages/mine/mine.wxml-->
+<!-- user -->
+<view class='user-information'>
+  <view class='user-image'>
+    <image src='{{UserPic}}'></image>
+  </view>
+  <view class='user-box'>
+    <view class='user-name-box'>
+      <view class='user-name'>{{UserName}}</view>
+      <image class='logo' src='../../images/my-logo.png'></image>
+    </view>
+    <view class='user-id'>id:287236363</view>
+  </view>
+</view>
+
+
+
+<!-- user-end -->
+<!--  attention-->
+<view class='attention'>
+  <view>微信关注全脑学院，获得更多优惠</view>
+  <text class='iconfont arrow'></text>
+</view>
+<!-- attention end -->
+<!-- money -->
+<view class='money'>
+  <view class='money-box'>
+    <view class='money-title'>
+      <text class='title'>课程销售总额</text>
+      <text class='title2'>(元)</text>
+    </view>
+    <view class='money-val'>
+      <text class='total'>2837,2928,2773</text>
+      <text class='today'>今日：283838</text>
+    </view>
+  </view>
+  <view class='right-arrow'>
+    <text class='iconfont arrow'></text>
+  </view>
+</view>
+<!-- money end -->
+<!-- order -->
+<view class='order'>
+  <view class='left'>
+    <view class='right-arrow Positioning'>
+      <text class='iconfont arrow'></text>
+    </view>
+    <view class='order-title'>
+      <text class='order-title-left'>我的收益</text>
+      <text class='order-title-right'>(元)</text>
+    </view>
+    <view class='order-money'>2333,192.111</view>
+    <view class='order-today'>
+      <text class='today-left'>今日</text>
+      <text class='today-right'>5637.11</text>
+    </view>
+  </view>
+  <view class='line'></view>
+  <view class='right'>
+    <view class='right-arrow Positioning-right'>
+      <text class='iconfont arrow'></text>
+    </view>
+    <view class='order-title'>
+      <text class='order-title-left'>成交订单</text>
+      <text class='order-title-right'>(笔)</text>
+    </view>
+    <view class='order-money'>233</view>
+    <view class='order-today'>
+      <text class='today-left'>今日</text>
+      <text class='today-right'>56</text>
+    </view>
+  </view>
+  <!-- <view class='line'></view> -->
+</view>
+<!-- order end-->
+
+<!-- invite -->
+<view class='invite'>
+  <view class='left'>
+    <view class='order-title'>
+      <text class='order-title-left'>我的朋友</text>
+      <text class='order-title-right'>(人)</text>
+    </view>
+    <view class='order-money'>233234</view>
+    <view class='order-today'>
+      <text class='today-left'>今日</text>
+      <text class='today-right'>56</text>
+    </view>
+  </view>
+  <view class='right'>
+    <image src='../../images/shanchu/content2.png'></image>
+  </view>
+</view>
+<!-- invite end -->
+
+<!-- My Order -->
+<view class='order-box'>
+  <view class='title'>我的订单</view>
+  <view class='icon-box'>
+   <view class='order-items'>
+      <image src='../../images/Pendingpayment.png' style='margin-top:8rpx'></image>
+      <text style='margin-top:16rpx'>待付款</text>
+   </view>
+   <view class='order-items'>
+      <image src='../../images/tobedelivered.png' style='width:58rpx;height:48rpx;margin-top:12rpx;'></image>
+      <text style='margin-top:16rpx'>待发货</text>
+   </view>
+   <view class='order-items'>
+      <image src='../../images/Return.png' style='width:46rpx;height:54rpx;margin-top:9rpx;margin-bottom:8rpx;'></image>
+      <text style='margin-top:16rpx'>售货/退货</text>
+   </view>
+   <view class='order-items'>
+      <image src='../../images/all-order.png' style='width:54rpx;height:58rpx;'></image>
+      <text style='margin-top:16rpx'>全部订单</text>
+   </view>
+  </view>
+</view>
+<!-- My Order end -->
+
+<!-- My server -->
+<view class='MyServer'>
+ <view class='title'>我的订单</view>
+ <view class='MyServer-item'>
+    <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/youhuiquan.png' style='width:43rpx;height:33rpx;'></image>
+      </view>
+      <view class='text'>优惠券</view>
+    </view>
+     <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/qun.png' style='width:46rpx;height:43rpx;'></image>
+      </view>
+      <view class='text'>加店主群</view>
+    </view>
+     <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/yuanwangqingdan.png' style='width:39rpx;height:41rpx;'></image>
+      </view>
+      <view class='text'>商品清单</view>
+    </view>
+     <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/zuji.png' style='width:41rpx;height:43rpx;'></image>
+      </view>
+      <view class='text'>访问足迹</view>
+    </view>
+     <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/yaoqinghaoyou.png' style='width:46rpx;height:40rpx;'></image>
+      </view>
+      <view class='text'>邀请好友</view>
+    </view>
+     <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/dizhi.png' style='width:43rpx;height:45rpx;'></image>
+      </view>
+      <view class='text'>地址</view>
+    </view>
+     <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/tongzhi.png' style='width:45rpx;height:47rpx;'></image>
+      </view>
+      <view class='text'>消息通知</view>
+    </view>
+     <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/kefu.png' style='width:47rpx;height:42rpx;'></image>
+      </view>
+      <view class='text'>客服电话</view>
+    </view>
+     <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/liuliang.png' style='width:49rpx;height:41rpx;'></image>
+      </view>
+      <view class='text'>MQ+</view>
+    </view>
+    <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/sucai.png' style='width:43rpx;height:33rpx;'></image>
+      </view>
+      <view class='text'>素材库</view>
+    </view>
+    <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/erweima-2.png' style='width:48rpx;height:42rpx;'></image>
+      </view>
+      <view class='text'>上传二维码</view>
+    </view>
+    <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/darendaoshi.png' style='width:45rpx;height:49rpx;'></image>
+      </view>
+      <view class='text'>我的导师</view>
+    </view>
+    <view class='items'>
+      <view class='items-icon'>
+        <image src='../../images/my/shezhi-2.png' style='width:47rpx;height:41rpx;'></image>
+      </view>
+      <view class='text'>设置</view>
+    </view>
+     
+ </view>
+</view>
+<!-- My server end -->
+

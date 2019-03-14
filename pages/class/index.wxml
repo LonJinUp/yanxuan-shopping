@@ -1,0 +1,22 @@
+<view class='class'>
+  <view class='class-left'>
+    <view class="item {{curNav == item.id ?'active':''}}" wx:for="{{leftitems}}" data-id='{{item.id}}' bindtap='switchRightTab'>
+    <text wx:if="{{curNav == item.id ?'active':''}}" class="line {{curNav == item.id ?'active2':''}}"></text>{{item.name}}
+    </view>
+  </view>
+  <view class='class-right'>
+    <view class='item'>
+      <view class='class-item-title'>
+      美妆护肤
+      </view>
+      <view class='content'>
+        <navigator>
+          <view class='items'>
+            <image class='content-image' src='../../images/shanchu/content.png'></image>
+            <view class='text'>面膜</view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>
