@@ -1,94 +1,125 @@
-/* pages/SecondaryPage/Settlement/index.wxss */
+/* pages/SecondaryPage/LoadPay/index.wxss */
+/* pay time */
+.pay-time{
+  width:750rpx;
+  height:68rpx;
+  background:rgba(217,189,140,1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pay-time image{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+.pay-time .title{
+  /* width: 200rpx; */
+  font-size:22rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+}
+/* pay-time end */
+
+/* pay-status */
+.pay-status{
+  width: 100%;
+  height: 174rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pay-status .left{
+  width: 150rpx;
+  height: 113rpx;
+}
+.pay-status .left image{
+  width: 100%;
+  height: 100%;
+}
+.pay-status .right{
+  width: 300rpx;
+  height: 114rpx;
+  margin-left: 30rpx;
+}
+.pay-status .right view:first-child{
+  width:88rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+  margin-top:30rpx;
+}
+.pay-status .right view:last-child{
+  width:200rpx;
+}
+.pay-status .right view text:first-child{
+  font-size:22rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+}
+.pay-status .right view text:last-child{
+  font-size:22rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:#ff1010;
+}
+/* pay status end */
+
+/* border */
 .border{
   width:100%;
   height:16rpx;
   background:rgba(246,246,246,1);
 }
+/* border-end */
+
 /* Address */
-.add-Address{
-  width: 100%;
-  height: 100%;
-  line-height: 120rpx;
-  font-size:26rpx;
-  font-family:PingFangSC-Regular;
-  font-weight:400;
-  color:#000;
-}
 .Address{
   width: 100%;
-  height: 120rpx;
-  display: flex;
-  justify-content: space-between;
+  min-height: 208rpx;
   box-sizing: border-box;
-  padding: 0 30rpx;
+  padding:  0 30rpx;
 }
-.Address .left{
-  width: 90%;
-  height:100%;
-}
-.Address .left .top{
-  width: 100%;
-  /* height: 30rpx; */
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10rpx;
-  align-items: center;
-  margin-bottom: 10rpx;
-}
-.Address .left .top .name{
-  width: 50%;
-  height: 100%;
-}
-.Address .left .top .phone{
-  /* width:155rpx; */
-  font-size:26rpx;
-  font-family:PingFangSC-Regular;
-  font-weight:400;
-  color:rgba(102,102,102,1);
-  line-height: 30rpx;
-}
-.Address .left .top .name text:first-child{
-  font-size:28rpx;
+.Address .title{
+  font-size:30rpx;
   font-family:PingFangSC-Medium;
   font-weight:600;
   color:rgba(0,0,0,1);
-  margin-right: 30rpx;
-}
-.Address .left .top .name text:last-child{
-  font-size:26rpx;
-  font-family:PingFangSC-Regular;
-  font-weight:400;
-  color:rgba(102,102,102,1);
   line-height:34rpx;
+  margin-top: 32rpx;
 }
-.Address .left .bottom{
-  width:100%;
-  font-size:26rpx;
-  font-family:PingFangSC-Regular;
-  font-weight:400;
-  color:rgba(102,102,102,1);
-  line-height:34rpx;
-  overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
-}
-.Address .right{
-  width: 10%;
-  height: 100%;
+.Address .name{
+  width: 100%;
+  height: auto;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  margin-top: 36rpx;
 }
-.Address .right image{
-  width: 12rpx;
-  height: 22rpx;
+.Address .name .left,.Address .name .right{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:34rpx;
+}
+.Address .content{
+  margin-top: 30rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:34rpx;
 }
 /* Address end */
-
 /* Product list */
 .Product-list{
   width: 100%;
   height: auto;
+  border-bottom: 1rpx solid rgba(246,246,246,1);
 }
 .product{
   width: 100%;
@@ -107,7 +138,7 @@
 }
 .product .content{
   width:100%;
-  height:140rpx;
+  height:150rpx;
   margin-top: 30rpx;
   overflow: hidden;
   display: flex;
@@ -172,51 +203,6 @@
 
 }
 /* Product list end */
-
-/* coupon */
-.coupon{
-  width:100%;
-  height:100rpx;
-  background:rgba(255,255,255,1);
-  box-sizing: border-box;
-  padding:0 28rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.coupon .left{
-  width:77rpx;
-  height:25rpx;
-  font-size:26rpx;
-  font-family:PingFangSC-Regular;
-  font-weight:400;
-  color:rgba(102,102,102,1);
-}
-
-.coupon .right{
-  display: flex;
-  align-items: center;
-}
-.coupon .right image{
-  display: block;
-  float: right;
-  width: 12rpx;
-  height: 22rpx;
-}
-.coupon .right .choose{
-  float: right;
-  height:38rpx;
-  font-size:26rpx;
-  font-family:PingFangSC-Regular;
-  font-weight:400;
-  color:rgba(255,16,16,1);
-  margin-right: 20rpx;
-}
-.coupon .right .choose.active{
-   color:rgba(187,187,187,1);
-}
-/* coupon end */
-
 /* message */
 .message{
   width:100%;
@@ -279,36 +265,46 @@
   color:rgba(102,102,102,1);
   margin-right: 20rpx;
 }
-/* message end */
-
-/* pay */
-.pay{
+.message2{
   width: 100%;
-  height:140rpx;
+  height:100rpx;
   background:rgba(255,255,255,1);
-  box-shadow:0px 0px 27px 0px rgba(0, 0, 0, 0.03);
-  position: fixed;
+  border-bottom: 1rpx solid rgba(246,246,246,1);
   box-sizing: border-box;
-  padding: 0 30rpx;
-  bottom: 0;
+  padding: 0 28rpx;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
-.pay .left text:first-child{
+.message2 text:first-child{
   font-size:26rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;
-  color:rgba(0,0,0,1);
-  margin-right:14rpx;
+  color:rgba(102,102,102,1);
+  margin-right: 20rpx;
 }
-.pay .left text:last-child{
- /* font-size:26rpx; */
+.message2 text:last-child{
+  font-size:26rpx;
   font-family:PingFangSC-Regular;
-  font-weight:600;
-  color:#FF1010;
+  font-weight:400;
+  color:#000;
+  margin-top:4rpx;
 }
-.pay .right{
+/* message end */
+
+/* buy bottom */
+.buy-bottom{
+  width:100%;
+  height:140rpx;
+  position: fixed;
+  bottom: 0;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 27px 0px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+  padding-top: 30rpx;
+  padding-right: 30rpx;
+
+}
+.buy-bottom .right{
   width:300rpx;
   height:72rpx;
   background:linear-gradient(-30deg,rgba(251,91,34,1),rgba(255,16,16,1));
@@ -319,6 +315,27 @@
   font-family:PingFangSC-Medium;
   font-weight:500;
   color:rgba(255,255,255,1);
-
+  float: right;
 }
-/* pay end */
+.buy-bottom .left{
+  float: right;
+  width:240rpx;
+  height:72rpx;
+  background:rgba(255,255,255,1);
+  border:1rpx solid rgba(0, 0, 0, 1);
+  border-radius:30rpx;
+  margin-right: 30rpx;
+  text-align: center;
+  line-height: 72rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(0,0,0,1);
+}
+.time{
+  font-size:26rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:#000;
+}
+/* buy bottom */

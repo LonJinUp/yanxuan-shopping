@@ -1,0 +1,95 @@
+<!--pages/SecondaryPage/LoadPay/index.wxml-->
+
+<!-- pay time -->
+<view class='pay-time'>
+  <image src='../../../images/tanhao.png'></image>
+  <view class='title'>
+    <text>请在<text style="color:#ff1010">{{clock}}</text>完成支付,超时订单自动取消</text>
+  </view>
+</view>
+<!-- pay time end -->
+
+<!-- pay status -->
+<view class='pay-status'>
+  <view class='left'>
+    <image src='../../../images/qianbao.png'></image>
+  </view>
+  <view class='right'>
+    <view>待支付</view>
+    <view>
+      <text>还需支付 </text>
+      <text>￥<text style='font-weight:600;font-size:26rpx'>200</text></text>
+    </view>
+  </view>
+</view>
+<!-- pay status end -->
+<view class='border'></view>
+
+<!--Address-->
+<view class='Address'>
+  <view class='title'>收货地址</view>
+  <view class='name'>
+    <view class='left'>张小北</view>
+    <view class='right'>1865738462</view>
+  </view>
+  <view class='content'>北京市北京市大兴区西红门地区嘉悦广场8号楼88</view>
+</view>
+<!-- Address end -->
+<view class='border'></view>
+<!-- Product list  -->
+<view class='Product-list'>
+  <view class='product'>
+    <view class='title'>商品信息</view>
+    <view class='content'>
+      <view class='left'>
+        <image src='../../../images/shanchu/content.png'></image>
+      </view>
+      <view class='right'>
+        <view class='name'>Converse Chuck 70 拼色 粉紫绿橙 紫丁香全球限量款</view>
+        <view class='size'>
+          <text>经典款 | 40码</text>
+        </view>
+        <view class='price'>
+          <text>￥300</text>
+          <text>x1</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+</view>
+<!-- Product list end -->
+<!-- message -->
+<view class='message'>
+  <view class='left'>运费</view>
+  <view class='right'>￥000.00</view>
+</view>
+<view class='message'>
+  <view class='left'>还需支付</view>
+  <view class='right' style='color:#FF1010'>￥ 996.00</view>
+</view>
+<view class='border'></view>
+<view class='message'>
+  <view class='left'>发票信息</view>
+  <view class='right'>不开发票</view>
+</view>
+<view class='border'></view>
+<view class='message2'>
+   <text>订单编号:</text>
+   <text>201983838383838</text>
+</view>
+<view class='message2'>
+   <text>下单时间:</text>
+   <text>2019.10.20</text>
+</view>
+<!-- message end -->
+<view style="width:100%;height:150rpx"></view>
+<!-- buy-btn -->
+<view class='buy-bottom'>
+  <view class='right'>支付 {{clock}}</view>
+  <view class='left'>取消订单</view>
+</view>
+<!-- buy btn-end -->
+
+
+

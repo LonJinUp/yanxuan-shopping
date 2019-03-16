@@ -23,21 +23,24 @@
 </view>
 <!-- attention end -->
 <!-- money -->
-<view class='money'>
-  <view class='money-box'>
-    <view class='money-title'>
-      <text class='title'>课程销售总额</text>
-      <text class='title2'>(元)</text>
+<navigator url='../SecondaryPage/MyIncome/index'>
+  <view class='money'>
+    <view class='money-box'>
+      <view class='money-title'>
+        <text class='title'>小店销售额</text>
+        <text class='title2'>(元)</text>
+      </view>
+      <view class='money-val'>
+        <text class='total'>2837,2928,2773</text>
+        <text class='today'>今日：283838</text>
+      </view>
     </view>
-    <view class='money-val'>
-      <text class='total'>2837,2928,2773</text>
-      <text class='today'>今日：283838</text>
+    <view class='right-arrow'>
+      <text class='iconfont arrow'></text>
     </view>
   </view>
-  <view class='right-arrow'>
-    <text class='iconfont arrow'></text>
-  </view>
-</view>
+</navigator>
+
 <!-- money end -->
 <!-- order -->
 <view class='order'>

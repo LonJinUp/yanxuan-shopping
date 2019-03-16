@@ -36,15 +36,8 @@ Page({
     ]
   
   },
-
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    var total_micro_second = 36 * 60 * 60 * 1000;
-
-    /* 毫秒级倒计时 */
+  //倒计时
+  time: function (total_micro_second){
     function count_down(that) {
       // 渲染倒计时时钟
       that.setData({
@@ -86,6 +79,14 @@ Page({
       return num < 10 ? "0" + num : num
     }
     count_down(this);
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    var total_micro_second = 36 * 60 * 60 * 1000;
+    /* 毫秒级倒计时 */
+    this.time(total_micro_second);
   },
 
 /**

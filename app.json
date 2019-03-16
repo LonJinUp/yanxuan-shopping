@@ -1,12 +1,16 @@
 {
   "pages": [
+    "pages/SecondaryPage/MyIncome/index",
+    "pages/my/index",
+    "pages/index/index",
+    "pages/SecondaryPage/OrderDetails/index",
+    "pages/SecondaryPage/LoadPay/index",
     "pages/SecondaryPage/Settlement/index",
     "pages/SecondaryPage/product/index",
     "pages/buy/index",
     "pages/SecondaryPage/Productlist/index",
-    "pages/index/index",
     "pages/class/index",
-    "pages/my/index"
+    "pages/SecondaryPage/income/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

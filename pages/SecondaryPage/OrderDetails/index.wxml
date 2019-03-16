@@ -1,0 +1,72 @@
+<!-- order status -->
+<view class='order-status'>
+  <view class='order-icon'>
+    <view class='left'></view>
+    <view class='center'></view>
+    <view class='right'></view>
+  </view>
+  <view class='icon-text'>
+    <view class='left'>已下单</view>
+    <view class='right'>已取消</view>
+  </view>
+</view>
+<!-- order status end -->
+<view class='border'></view>
+<!--Address-->
+<view class='Address'>
+  <view class='title'>收货地址</view>
+  <view class='name'>
+    <view class='left'>张小北</view>
+    <view class='right'>1865738462</view>
+  </view>
+  <view class='content'>北京市北京市大兴区西红门地区嘉悦广场8号楼88</view>
+</view>
+<!-- Address end -->
+<view class='border'></view>
+<!-- Product list  -->
+<view class='Product-list'>
+  <view class='product'>
+    <view class='title'>商品信息</view>
+    <view class='content'>
+      <view class='left'>
+        <image src='../../../images/shanchu/content.png'></image>
+      </view>
+      <view class='right'>
+        <view class='name'>Converse Chuck 70 拼色 粉紫绿橙 紫丁香全球限量款</view>
+        <view class='size'>
+          <text>经典款 | 40码</text>
+        </view>
+        <view class='price'>
+          <text>￥300</text>
+          <text>x1</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+</view>
+<!-- Product list end -->
+<!-- message -->
+<view class='message'>
+  <view class='left'>运费</view>
+  <view class='right'>￥000.00</view>
+</view>
+<view class='message'>
+  <view class='left'>订单金额</view>
+  <view class='right' style='color:#FF1010'>￥ 996.00</view>
+</view>
+<view class='border'></view>
+<view class='message'>
+  <view class='left'>发票信息</view>
+  <view class='right'>不开发票</view>
+</view>
+<view class='border'></view>
+<view class='message2'>
+   <text>订单编号:</text>
+   <text>201983838383838</text>
+</view>
+<view class='message2'>
+   <text>下单时间:</text>
+   <text>2019.10.20</text>
+</view>
+<!-- message end -->
