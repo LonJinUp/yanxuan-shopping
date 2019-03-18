@@ -1,16 +1,17 @@
 {
   "pages": [
+    "pages/SecondaryPage/OrderDetails/index",
+    "pages/SecondaryPage/income/index",
     "pages/SecondaryPage/MyIncome/index",
     "pages/my/index",
     "pages/index/index",
-    "pages/SecondaryPage/OrderDetails/index",
+    
     "pages/SecondaryPage/LoadPay/index",
     "pages/SecondaryPage/Settlement/index",
     "pages/SecondaryPage/product/index",
     "pages/buy/index",
     "pages/SecondaryPage/Productlist/index",
-    "pages/class/index",
-    "pages/SecondaryPage/income/index"
+    "pages/class/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -5,9 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    //初始化悬浮位置
+    x: 333,
+    y: 534,
+    scale: 2,
+    //点击弹出分享
+    ShowShare: false,
   },
-
+  //悬浮位置变动坐标
+  onChange(e) {
+    console.log(e.detail)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -15,6 +23,21 @@ Page({
 
   },
 
+  //弹出分享
+  ShowShare: function (e) {
+    console.log(e);
+    var that = this;
+    that.setData({
+      ShowShare: true,
+    })
+  },
+  //点击关闭
+  HideShare: function (e) {
+    var that = this;
+    that.setData({
+      ShowShare: false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

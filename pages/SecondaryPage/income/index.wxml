@@ -1,5 +1,6 @@
 <!--pages/SecondaryPage/MyIncome/index.wxml-->
 <!-- income -->
+ <movable-area>
 <view class='income'>
   <view class='income-title'>
     <view class='left'>
@@ -16,6 +17,23 @@
 </view>
 <!-- income -->
 
+<!-- withdraw -->
+<view class='withdraw'>
+  <view class='left'>
+    <text>可提现 </text>
+    <text>(元)</text>  
+    <view>48292</view>
+  </view>
+  <view class='right'>提现</view>
+</view>
+<!-- withdraw end -->
+<view class='border'></view>
+<!-- Certification -->
+<view class='Certification'>
+  <view class='icon'></view>
+  <text class='title'>您的身份认证成功</text>
+</view>
+<!-- Certification end -->
 <!-- income content -->
 <view class='income-content'>
   <view class='income-items'>
@@ -40,3 +58,24 @@
   </view>
 </view>
 <!-- income content end -->
+<!-- choose-btn -->
+<movable-view bindtap='ShowShare' bindchange="onChange" x="{{x}}" y="{{y}}" direction="all" out-of-bounds='ture' class='choose'>
+        <image src='../../../images/shaixuan.png'></image>
+      </movable-view>
+</movable-area>
+<!-- choose-btn end -->
+
+<!-- showModal -->
+<view class='showModal-box' wx:if='{{ShowShare}}' bindtap='HideShare'></view>
+<view class='showModal' wx:if='{{ShowShare}}'>
+  <view class='title'>选择类型</view>
+  <view class='choose-content'>
+    <view class='items active'>默认收益</view>
+    <view class='items'>佣金收益</view>
+    <view class='items'>奖励收益</view>
+    <view class='items'>我的资产</view>
+    <view class='items'>奖励补充</view>
+  </view>
+   <view class='back-btn' bindtap='HideShare'>取消</view>
+</view>
+<!-- showModal end -->
