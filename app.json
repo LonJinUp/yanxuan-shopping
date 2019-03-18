@@ -1,17 +1,20 @@
 {
   "pages": [
-    "pages/SecondaryPage/OrderDetails/index",
-    "pages/SecondaryPage/income/index",
-    "pages/SecondaryPage/MyIncome/index",
+    "pages/SecondaryPage/coupon/index",
+    "pages/SecondaryPage/PendingPayment/index",
     "pages/my/index",
-    "pages/index/index",
-    
-    "pages/SecondaryPage/LoadPay/index",
+    "pages/SecondaryPage/AllOrders/index",
     "pages/SecondaryPage/Settlement/index",
+    "pages/SecondaryPage/MyIncome/index",
+    "pages/SecondaryPage/income/index",
+    "pages/SecondaryPage/OrderDetails/index",
+    "pages/class/index",
+    "pages/SecondaryPage/MyFriend/index",
+    "pages/SecondaryPage/LoadPay/index",
     "pages/SecondaryPage/product/index",
-    "pages/buy/index",
     "pages/SecondaryPage/Productlist/index",
-    "pages/class/index"
+    "pages/buy/index",
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

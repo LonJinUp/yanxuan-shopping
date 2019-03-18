@@ -1,0 +1,39 @@
+<!--pages/SecondaryPage/coupon/index.wxml-->
+<view class='remind'>
+  <image src='../../../images/tanhao.png'></image>
+  <text>秒杀、商家直发商品暂不支持使用优惠券</text>
+</view>
+
+<!-- tab -->
+<view class="swiper-tab">
+  <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0">
+    <text bindtap="clickTab" data-current="0">未使用(1)</text>
+    <view class="bottom-border {{currentTab==0?'active':''}}"></view>
+  </view>
+  <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1">
+    <text bindtap="clickTab" data-current="1">已使用(2)</text>
+    <view class="bottom-border {{currentTab==1?'active':''}}"></view>
+  </view>
+  <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2">
+    <text bindtap="clickTab" data-current="2">已失效(2)</text>
+    <view class="bottom-border {{currentTab==2?'active':''}}"></view>
+  </view>
+</view>
+
+<swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
+  <swiper-item>
+    <view class='coupon-list'>
+      <view class='items'>
+        <view class='left'></view>
+        <view class='right'></view>
+      </view>
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view>提现中</view>
+  </swiper-item>
+  <swiper-item>
+    <view>已提现</view>
+  </swiper-item>
+</swiper>
+<!-- tab end -->

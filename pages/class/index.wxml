@@ -1,3 +1,8 @@
+<!-- search -->
+<view class='search'>
+  <input placeholder='搜索商品名称或品牌' confirm-type="search" bindconfirm="inputTyping"></input>
+</view>
+<!-- search end-->
 <view class='class'>
   <view class='class-left'>
     <view class="item {{curNav == item.id ?'active':''}}" wx:for="{{leftitems}}" data-id='{{item.id}}' bindtap='switchRightTab'>
@@ -10,7 +15,7 @@
       美妆护肤
       </view>
       <view class='content'>
-        <navigator>
+        <navigator hover-class="none" url='../SecondaryPage/Productlist/index'>
           <view class='items'>
             <image class='content-image' src='../../images/shanchu/content.png'></image>
             <view class='text'>面膜</view>

@@ -1,0 +1,35 @@
+
+ <!-- Product list  -->
+    <view class='Product-list'>
+      <view class='product'>
+        <view class='title'>
+          <view class='left'>订单编号：192308376653234</view>
+          <view class='right active'>待付款</view>
+        </view>
+        <view class='content'>
+          <view class='left'>
+            <image src='../../../images/shanchu/content.png'></image>
+          </view>
+          <view class='right'>
+            <view class='name'>Converse Chuck 70 拼色 粉紫绿橙 紫丁香全球限量款</view>
+            <view class='size'>
+              <text>经典款 | 40码</text>
+            </view>
+            <view class='price'>
+              <text>￥300</text>
+              <text>x1</text>
+            </view>
+          </view>
+        </view>
+        <view class='content-text'>
+          <text>共1件商品 总计:</text>
+          <text>￥960</text>
+        </view>
+        <view class='commission'>
+          <navigator class='items' url='../LoadPay/index' hover-class='none'>支付{{clock}}</navigator>
+        </view>
+      </view>
+      <view class='border'></view>
+
+    </view>
+    <!-- Product list end -->

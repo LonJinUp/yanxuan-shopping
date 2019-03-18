@@ -5,8 +5,9 @@ Page({
    */
   data: {
     delBtnWidth: 180,
+    txtStyle:0,
     cartItems: [
-      { id: 1, name: '商商品1商品1商品1商商1商品1商品1商品1商品1商品1品1', caption: '副标题', specifications: '规格111', price: '100', quantity: 1 },
+      { id: 1, name: '商商品', caption: '副标题', specifications: '规格111', price: '100', quantity: 1 },
       { id: 2, name: '商品2', caption: '副标题', specifications: '规格111', price: '104', quantity: 1 },
       { id: 3, name: '商品3', caption: '副标题', specifications: '规格111', price: '200', quantity: 2 },
       { id: 4, name: '商品4', caption: '副标题', specifications: '规格111', price: '150', quantity: 4 }
@@ -47,6 +48,7 @@ Page({
   },
   // 删除
   remove: function (e) {
+    console.log(e);
     var cartItems = this.data.cartItems
     var index = e.currentTarget.dataset.index
     var skuId = cartItems[index].id
@@ -64,7 +66,8 @@ Page({
           this.selNum()
           console.log('用户点击确定');
         } else if (res.cancel) {
-
+          //更新列表的状态
+        
           console.log('用户点击取消');
         }
       }
@@ -169,7 +172,7 @@ Page({
       //手指起始点位置与移动期间的差值
       var disX = this.data.startX - moveX;
       var delBtnWidth = this.data.delBtnWidth;
-      var txtStyle = "";
+      var txtStyle = '';
       if (disX == 0 || disX < 0) {//如果移动距离小于等于0，文本层位置不变
         txtStyle = "left:0px";
       } else if (disX > 0) {//移动距离大于0，文本层left值等于手指移动距离
