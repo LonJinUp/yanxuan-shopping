@@ -24,16 +24,32 @@
   <swiper-item>
     <view class='coupon-list'>
       <view class='items'>
-        <view class='left'></view>
-        <view class='right'></view>
+        <view class='left active'>
+          <view class='val'>
+            <text>￥</text>
+            <text>50</text>
+          </view>
+          <view class='title'>满500可用</view>
+        </view>
+        <view class='right'>
+          <view class='title'>
+            <view class='active'>通用券</view>
+            <view>全场通用</view>
+          </view>
+          <view class='time'>2019/02/22  23:23  已失效</view>
+          <view class='details'>
+            <text>详细信息</text>
+            <image src='../../../images/bottom.png'></image>
+          </view>
+        </view>
       </view>
     </view>
   </swiper-item>
   <swiper-item>
-    <view>提现中</view>
+   
   </swiper-item>
   <swiper-item>
-    <view>已提现</view>
+    
   </swiper-item>
 </swiper>
 <!-- tab end -->

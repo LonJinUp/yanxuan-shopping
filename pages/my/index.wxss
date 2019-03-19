@@ -2,6 +2,7 @@
 page{
   background: #f6f6f6;
   font-family: [PingFangSC];
+  position: relative;
 }
 @font-face {
   font-family: 'iconfont';  /* project id 1061668 */
@@ -327,3 +328,40 @@ page{
   line-height: 24rpx;
   font-size: 24rpx;
 }
+/* showModal */
+.showModal-box{
+  position:absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  transition: all .6s;
+  z-index: 2;
+}
+.showModal{
+  position:fixed;
+  bottom: 0;
+  right: 0;
+  width:100%;
+  height:330rpx;
+  background:#fff;
+  border-radius:30rpx 30rpx 0px 0rpx;
+  z-index:3;
+}
+.showModal view:first-child{
+  margin-top: 30rpx;
+}
+.showModal view{
+  width: 100%;
+  height:100rpx;
+  background:rgba(255,255,255,1);
+  border-top: 1rpx solid #EEEEEE;
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+  line-height:100rpx;
+  text-align: center;
+}
+/* showModal end */

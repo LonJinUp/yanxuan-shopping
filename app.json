@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/my/index",
     "pages/SecondaryPage/coupon/index",
     "pages/SecondaryPage/PendingPayment/index",
-    "pages/my/index",
     "pages/SecondaryPage/AllOrders/index",
     "pages/SecondaryPage/Settlement/index",
     "pages/SecondaryPage/MyIncome/index",

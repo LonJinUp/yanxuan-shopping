@@ -9,8 +9,31 @@ Page({
   data: {
     // 用户头像
     UserPic:"",
-    UserName:""
+    UserName:"",
+    //点击弹出分享
+    ShowShare: false,
   },
+  //弹出分享
+  ShowShare: function (e) {
+    var that = this;
+    that.setData({
+      ShowShare: true,
+    })
+  },
+  //点击关闭
+  HideShare: function (e) {
+    var that = this;
+    that.setData({
+      ShowShare: false
+    })
+  },
+  // 拨打电话
+  call:function(){
+    wx.makePhoneCall({
+      phoneNumber: '18534625325' 
+    })
+  },
+  
 
   /**
    * 生命周期函数--监听页面加载
