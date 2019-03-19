@@ -1,6 +1,6 @@
-##严选商城
+## 严选商城
 
-###目录结构
+### 目录结构
 * --- dist iView组件库
 * ---images 图片库
 * ---page 一级页面
@@ -20,9 +20,10 @@
         * ---AllOrders 全部订单
         * ---PendingPayment 待付款
         * ---coupon 优惠券
+        * ---Address 地址管理（添加地址）
         
         
-###用到的组件
+### 用到的组件
 *  [iView组件库](https://weapp.iviewui.com)
 *  [画布组件，可以生成分享海报](https://github.com/kuckboy1994/mp_canvas_drawer)
 
