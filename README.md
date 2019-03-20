@@ -8,6 +8,7 @@
      * ---index首页
      * ---class分类
      * ---buy 购物车
+     * ---login 登陆
      * SecondaryPage 二级三级页面(文件夹)
         * ---MyFriend 我的朋友
         * ---OrderDetails 订单明细
@@ -21,7 +22,10 @@
         * ---PendingPayment 待付款
         * ---coupon 优惠券
         * ---Address 地址管理（添加地址）
-        
+* ---pubilc 公共方法        
+      * ---js 公共js(文件夹)
+        * ---login.js 其他页面鉴定用户是否登陆
+        * ---wCache.js 操作缓存
         
 ### 用到的组件
 *  [iView组件库](https://weapp.iviewui.com)

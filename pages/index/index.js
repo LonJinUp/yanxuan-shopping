@@ -1,6 +1,9 @@
 // pages/index/index.js
 //获取应用实例
 const app = getApp();
+// 登陆js
+var Login = require('../../public/js/login.js')
+var Storage = require('../../public/js/wCache.js');
 
 Page({
 
@@ -84,6 +87,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    Login.denglu(options)
     var total_micro_second = 36 * 60 * 60 * 1000;
     /* 毫秒级倒计时 */
     this.time(total_micro_second);
@@ -100,7 +104,25 @@ onReady: function() {
  * 生命周期函数--监听页面显示
  */
 onShow: function() {
+  var that = this;
+  wx.request({
+    url: Login.url +'/routine/auth_api/index',
+    data: Storage.get("uid"),
+    method:"GET",
+    dataType:JSON,
+    header:"application / json",
+    success:function(res){
+      var res=JSON.parse(res.data);
+      console.log(res.data.roll_news)
+      that.setData({
+        msgList: res.data.roll_news
+      })
+    },
+    fail:function(){
 
+    },
+
+  })
 },
 
 /**

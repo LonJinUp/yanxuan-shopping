@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/SecondaryPage/coupon/index",
     "pages/SecondaryPage/ Address/index",
     "pages/my/index",
@@ -14,8 +15,7 @@
     "pages/SecondaryPage/LoadPay/index",
     "pages/SecondaryPage/product/index",
     "pages/SecondaryPage/Productlist/index",
-    "pages/buy/index",
-    "pages/index/index"
+    "pages/buy/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

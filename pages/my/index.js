@@ -1,6 +1,6 @@
 // pages/mine/mine.js
 const app = getApp();
-// const globalData = getApp().globalData
+const globalData = getApp().globalData
 Page({
 
   /**
@@ -39,17 +39,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(globalData)
-    // //用户头像
-    // var UserPic = globalData.userInfo.avatarUrl;
-    // // 用户名字
-    // var UserName = globalData.userInfo.nickName;
-    
-    // var that=this;
-    // that.setData({
-    //   UserPic: UserPic,
-    //   UserName:UserName
-    // })
+    console.log(globalData)
+    //用户头像
+    var UserPic = globalData.userInfo.avatarUrl;
+    // 用户名字
+    var UserName = globalData.userInfo.nickName;
+    var that=this;
+    that.setData({
+      UserPic: UserPic,
+      UserName:UserName
+    })
 
   },
 

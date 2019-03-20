@@ -23,48 +23,29 @@
 <swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
   <swiper-item>
     <view class='coupon-list'>
-      <view class='items'>
-        <view class='left active'>
-          <view class='val'>
-            <text>￥</text>
-            <text>50</text>
+      <block wx:for="{{couponData}}">
+        <view class='items'>
+          <view class='left active'>
+            <view class='val'>
+              <text>￥</text>
+              <text>50</text>
+            </view>
+            <view class='title'>满500可用</view>
           </view>
-          <view class='title'>满500可用</view>
+          <view class='right active'>
+            <view class='title'>
+              <view class='active'>通用券</view>
+              <view>全场通用</view>
+            </view>
+            <view class='time'>2019/02/22  23:23  已失效</view>
+            <view class='details' bindtap='Description' data-DescriptionShow='{{item.DescriptionShow}}' data-index="{{index}}">
+              <text>详细信息</text>
+              <image src='../../../images/bottom.png' class='{{item.DescriptionShow==true?"rotateRight":""}}'></image>
+            </view>
+          </view>
+          <view class='Description {{item.DescriptionShow==true?"show":""}}'>一个订单只能使用一张优惠券；秒杀商品不支持使用满减优惠券。</view>
         </view>
-        <view class='right active'>
-          <view class='title'>
-            <view class='active'>通用券</view>
-            <view>全场通用</view>
-          </view>
-          <view class='time'>2019/02/22  23:23  已失效</view>
-          <view class='details' bindtap='Description' data-DescriptionShow='{{DescriptionShow}}'>
-            <text>详细信息</text>
-            <image src='../../../images/bottom.png' class='{{DescriptionShow==true?"rotateRight":""}}'></image>
-          </view>
-        </view>
-        <view class='Description {{DescriptionShow==true?"show":""}}'>一个订单只能使用一张优惠券；秒杀商品不支持使用满减优惠券。</view>
-      </view>
-       <view class='items'>
-        <view class='left active'>
-          <view class='val'>
-            <text>￥</text>
-            <text>50</text>
-          </view>
-          <view class='title'>满500可用</view>
-        </view>
-        <view class='right active'>
-          <view class='title'>
-            <view class='active'>通用券</view>
-            <view>全场通用</view>
-          </view>
-          <view class='time'>2019/02/22  23:23  已失效</view>
-          <view class='details' bindtap='Description' data-DescriptionShow='{{DescriptionShow}}'>
-            <text>详细信息</text>
-            <image src='../../../images/bottom.png' class='{{DescriptionShow==true?"rotateRight":""}}'></image>
-          </view>
-        </view>
-        <view class='Description {{DescriptionShow==true?"show":""}}'>一个订单只能使用一张优惠券；秒杀商品不支持使用满减优惠券。</view>
-      </view>
+      </block>
     </view>
   </swiper-item>
   <swiper-item>

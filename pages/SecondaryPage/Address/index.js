@@ -1,45 +1,50 @@
-// pages/SecondaryPage/OrderDetails/index.js
+// pages/SecondaryPage/ Address/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    //选项卡
-    currentTab: 0,
-    //优惠券
-    couponData:[
-      { id: 0, DescriptionShow: false },
-      { id: 1, DescriptionShow:false},
-    ]
+    //控制没地址时候显示
+    Address:true,
+    //添加地址
+    Add_Address:false,
+    //派送日期选择
+    index: '0',
+    array: ['任意时间', '工作日', '非工作日',],
+    //地区选择
+    region: ['北京', '北京市', '朝阳区'],
+    customItem: '全部'
   },
-  //查看优惠券详情
-  Description:function(e){
-    console.log(e);
-    let show = e.currentTarget.dataset.descriptionshow
-    let index = e.currentTarget.dataset.index
-    this.data.couponData[index].DescriptionShow = !this.data.couponData[index].DescriptionShow
+  //派送时间
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      couponData: this.data.couponData
+      index: e.detail.value
     })
   },
-  //滑动切换
-  swiperTab: function (e) {
+  //地址选择
+  bindRegionChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value
+    })
+  },
+  
+  //添加地址
+  Add_Address:function(e){
+    var that=this;
+    that.setData({
+      Add_Address:true
+    })
+  },
+
+  //保存地址
+  SaveAddress:function(e){
     var that = this;
     that.setData({
-      currentTab: e.detail.current
-    });
-  },
-  //点击切换
-  clickTab: function (e) {
-    var that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
-      return false;
-    } else {
-      that.setData({
-        currentTab: e.target.dataset.current
-      })
-    }
+      Add_Address: false
+    })
   },
 
   /**
