@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/SecondaryPage/product/index",
+    "pages/login/login",
     "pages/SecondaryPage/coupon/index",
     "pages/SecondaryPage/ Address/index",
     "pages/my/index",
@@ -13,7 +15,6 @@
     "pages/class/index",
     "pages/SecondaryPage/MyFriend/index",
     "pages/SecondaryPage/LoadPay/index",
-    "pages/SecondaryPage/product/index",
     "pages/SecondaryPage/Productlist/index",
     "pages/buy/index"
   ],

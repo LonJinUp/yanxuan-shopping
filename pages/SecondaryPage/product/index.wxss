@@ -43,6 +43,7 @@ swiper swiper-item .items image{
   min-width: 190rpx;
   height: 100%;
   border-right:1rpx solid rgba(187,187,187,1);
+  padding-right:.2rem; 
 }
 .content .money-box .left text:first-child{
   font-size:30rpx;
@@ -739,4 +740,5 @@ swiper swiper-item .items image{
 }
 
 /* buy num end */
+
 

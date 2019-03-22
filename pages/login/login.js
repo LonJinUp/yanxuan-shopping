@@ -43,8 +43,7 @@ Page({
                     success:function(res){
                       //存token
                       var uid = res.data.data.uid;
-                      console.log(uid)
-                      console.log(res)
+                      globalData.uid = res.data.data.uid;
                       Storage.put('uid', uid,1728000);
                       //转跳上一页
                       wx.navigateBack({

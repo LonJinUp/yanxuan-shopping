@@ -1,22 +1,13 @@
 <!-- swiper -->
 <view class='swiper-box'>
   <swiper indicator-dots  circular autoplay='true' interval='3000' duration='600' style='background:#fff;padding-top:10rpx'>
-
+<block wx:for='{{banner}}'>
   <swiper-item>
     <view class='items'>
-      <image src='../../../images/shanchu/banner.jpg'></image>
+      <image src='{{item}}'></image>
     </view>
   </swiper-item>
-   <swiper-item>
-    <view class='items'>
-      <image src='../../../images/shanchu/banner.jpg'></image>
-    </view>
-  </swiper-item>
-   <swiper-item>
-    <view class='items'>
-      <image src='../../../images/shanchu/banner.jpg'></image>
-    </view>
-  </swiper-item>
+</block>
 </swiper>
 </view>
 <!-- swiper -->
@@ -26,15 +17,15 @@
 <!-- money -->
   <view class='money-box'>
     <view class='left'>
-      <text>￥960</text>
-      <text>￥6000</text>
+      <text>￥{{storeInfo.price}}</text>
+      <text>￥{{storeInfo.ot_price}}</text>
     </view>
     <view class='right'>赚￥200</view>
   </view>
   <!-- money end -->
   <!-- title -->
   <view class='Product-title'>
-    <view class='name'>Converse Chuck 70 拼色 粉紫绿橙 紫丁香</view>
+    <view class='name'>{{storeInfo.store_name}}</view>
     <view class='right-btn'>
       <view>
         <view class='recommend'>
@@ -53,9 +44,7 @@
   <!-- title end -->
   <!-- Attributes -->
   <view class='Attributes'>
-    <text>明星</text>
-    <text>潮流</text>
-    <text>限量</text>
+    <text>{{storeInfo.store_info}}</text>
   </view>
   <!-- Attributes end -->
 
@@ -96,9 +85,8 @@
 <!-- choose -->
 <view class='choose'>
   <view class='left' bindtap='ShowShare'>
-    <text>{{choose==false?"请选择:":"已选择:"}}</text>
-    <text>均码;</text>
-    <text>x3</text>
+    <text>{{productValue[gindex].suk==""?"已选择:":"请选择:"}}</text>
+    <text>{{productValue[gindex].suk}}</text>
   </view>
   <!-- <view class='right'> -->
     <image src='../../../images/prev.png'></image>
@@ -198,24 +186,24 @@
     <image src='../../../images/guanbi.png'></image>
   </view>
   <view class='product-small-pic'>
-    <image src='../../../images/shanchu/banner.jpg'></image>
+    <image src='{{productValue[gindex].image}}'></image>
   </view>
   <view class='product-title'>
-    <view class='title'>Converse Chuck 70 拼色 粉紫绿橙 紫
-丁香</view>
+    <view class='title'>{{storeInfo.store_name}}</view>
     <view class='money-box'>
-      <text class='first'>￥237</text>
-      <text class='first2'>229</text>
+      <text class='first'>￥{{storeInfo.price}}</text>
+      <text class='first2'>￥{{storeInfo.ot_price}}</text>
     </view>
   </view>
   <!-- border -->
   <view class='border'></view>
   <!-- border end -->
   <view class='size-box'>
-    <view class='title'>尺码</view>
+    <view class='title'>选择</view>
     <view class='size-item'>
-      <view class='items'>S</view>
-      <view class='items'>SXX</view>
+      <block wx:for="{{productValue}}" wx:key="index">
+        <view class="items {{gindex==index?'color':''}}" data-index='{{item.product_id}}'  bindtap='guige' data-current='{{index}}'>{{index}}</view>
+      </block>
     </view>
   </view>
   <view class='number-box'>
@@ -232,3 +220,5 @@
   </view>
 </view>
 <!-- showModal end -->
+
+

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-   
+    "i-spin": "../../dist/spin/index",
+    "i-icon": "../../dist/icon/index"
   },
   "navigationBarTitleText": "严选好物"
   

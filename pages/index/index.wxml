@@ -2,80 +2,67 @@
 <!--pages/index/index.wxml-->
 
 <!-- 登录后 首页全部内容 -->
-  <!-- swiper -->
+<!-- swiper -->
 <swiper indicator-dots next-margin='100rpx' circular autoplay='true' interval='3000' duration='600' style='background:#fff;padding-top:10rpx'>
-  <swiper-item>
-    <view class='item'>
-      <image src='../../images/banner-1.png'></image>
-    </view>
-  </swiper-item>
-  <swiper-item>
-    <view class='item'>
-       <image src='../../images/banner-1.png'></image>
-    </view>
-  </swiper-item>
-  <swiper-item>
-    <view class='item'>
-       <image src='../../images/banner-1.png'></image>
-    </view>
-  </swiper-item>
-  <swiper-item>
-    <view class='item'>
-       <image src='../../images/banner-1.png'></image>
-    </view>
-  </swiper-item>
+  <block wx:for='{{banner}}'>
+    <swiper-item>
+      <view class='item'>
+        <image src='{{item.pic}}'></image>
+      </view>
+    </swiper-item>
+  </block>
 </swiper>
 <!-- swiper end -->
 
-  <!-- Features -->
-  <view class='Features'>
-    <view class='Features-item'>
-      <view class='Features-icon'>
-        <image src='../../images/recommend.png'></image>
-      </view>
-    </view>
-    <view class='Features-item'>
-      <view class='Features-icon'>
-        <image src='../../images/invite.png'></image>
-      </view>
-    </view>
-    <view class='Features-item'>
-      <view class='Features-icon'>
-        <image src='../../images/Check.png'></image>
-      </view>
-    </view>
-    <view class='Features-item'>
-      <view class='Features-icon'>
-        <image src='../../images/Newcomer.png'></image>
-      </view>
-    </view>
-    <view class='Features-item'>
-      <view class='Features-icon'>
-        <image src='../../images/material.png'></image>
-      </view>
+<!-- Features -->
+<view class='Features'>
+  <view class='Features-item'>
+    <view class='Features-icon'>
+      <image src='../../images/recommend.png'></image>
     </view>
   </view>
-  <!-- Features end -->
+  <view class='Features-item'>
+    <view class='Features-icon'>
+      <image src='../../images/invite.png'></image>
+    </view>
+  </view>
+  <view class='Features-item'>
+    <view class='Features-icon'>
+      <image src='../../images/Check.png'></image>
+    </view>
+  </view>
+  <view class='Features-item'>
+    <view class='Features-icon'>
+      <image src='../../images/Newcomer.png'></image>
+    </view>
+  </view>
+  <view class='Features-item'>
+    <view class='Features-icon'>
+      <image src='../../images/material.png'></image>
+    </view>
+  </view>
+</view>
+<!-- Features end -->
 
-  <!-- Notice -->
-  <view class='Notice'>
-    <view class='Notice-icon'>
-      <image src='../../images/Notice-icon.png'></image>
-    </view>
-    <view class='Notice-con'>
-      <image class='Notice-small-ico' src='../../images/laba.png'></image>
-      <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
-        <block wx:for="{{msgList}}">
-          <navigator url="/pages/index/index" open-type="navigate">
-            <swiper-item>
-              <view class="swiper_item">{{item.info}}</view>
-            </swiper-item>
-          </navigator>
-        </block>
-      </swiper>
-    </view>
+<!-- Notice -->
+<view class='Notice'>
+  <view class='Notice-icon'>
+    <image src='../../images/Notice-icon.png'></image>
   </view>
-  <!-- Notice end -->
+  <view class='Notice-con'>
+    <image class='Notice-small-ico' src='../../images/laba.png'></image>
+    <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+      <block wx:for="{{msgList}}">
+        <navigator url="/pages/index/index" open-type="navigate">
+          <swiper-item>
+            <view class="swiper_item">{{item.info}}</view>
+          </swiper-item>
+        </navigator>
+      </block>
+    </swiper>
+  </view>
+</view>
+<!-- Notice end -->
 
 <!-- activity -->
 <view class='activity'>
@@ -94,34 +81,32 @@
       </view>
     </view>
     <view class='content'>
-      <view class='left'>
+      <navigator url="../SecondaryPage/product/index?id={{Spike.id}}"class='left' style='background:url("{{Spike.image}}")no-repeat center center/100% 100%'>
         <view class='Triangle'></view>
-      </view>
-    </view>
-  </view>
-
-  <view class='activity-item activity-background-1'>
-    <view class='activity-top'>
-      <view class='left'>
-        <view class='top-title'>
-          <text class='title'>限时秒杀</text>
-          <text class='iconfont right-icon'></text>
-        </view>
-        <view class='title-small'>每日爆款限时抢</view>
-      </view>
+      </navigator>
       <view class='right'>
-        <text class='iconfont time'></text>
-        <text class='clock'>{{clock}}</text>
-      </view>
-    </view>
-    <view class='content'>
-      <view class='left'>
-        <view class='Triangle'></view>
+        <view class='share'>
+          <text>分享赚</text>
+          <image src='../../images/share.png'></image>
+        </view>
+        <view class='title'>{{Spike.title}}</view>
+        <view class='Description'>{{Spike.info}}</view>
+        <view class='price'>
+          <view class='left-price'>
+            <text>秒杀价:</text>
+            <text>￥{{Spike.price}}</text>
+          </view>
+          <view class='right-price'>
+            <text>赚:</text>
+            <text>￥200</text>
+          </view>
+        </view>
       </view>
     </view>
   </view>
 
-   <view class='activity-item activity-background-3'>
+
+  <view class='activity-item activity-background-3'>
     <view class='activity-top'>
       <view class='left'>
         <view class='top-title'>
@@ -131,20 +116,20 @@
         <view class='title-small'>千万好货 尽在全民严选</view>
       </view>
       <view class='right'>
-        <text class='iconfont time'></text>
-        <text class='clock'>{{clock}}</text>
+        <!-- <text class='iconfont time'></text>
+        <text class='clock'>{{clock}}</text> -->
       </view>
     </view>
     <view class='content content-3'>
-      <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" class='good-stuff' >
-          <view class='item' wx:for='{{goods}}'>
-            <image src='{{item.pic}}'></image>
-            <view class='title'>{{item.name}}</view>
-            <view class='money-box'>
-              <view class='money'>￥{{item.money}}</view>
-              <view class='makemoney'>赚{{item.makemoney}}</view>
-            </view>
+      <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" class='good-stuff'>
+        <view class='item' wx:for='{{hot_product}}'>
+          <image src='{{item.image}}'></image>
+          <view class='title'>{{item.store_name}}</view>
+          <view class='money-box'>
+            <view class='money'>￥{{item.price}}</view>
+            <view class='makemoney'>赚{{item.price}}</view>
           </view>
+        </view>
       </scroll-view>
     </view>
   </view>
@@ -173,6 +158,8 @@
   </view>
 </view>
 <!-- commodity end -->
-
-
-
+<block wx:if='{{loadshow}}'>
+  <view class="container" catchtouchmove="touchmoveHandler">
+    <i-spin fix size='large'></i-spin>
+  </view>
+</block>
