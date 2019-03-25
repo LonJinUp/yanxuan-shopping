@@ -1,0 +1,45 @@
+<!--pages/BrowseRecord/BrowseRecord.wxml-->
+<view class="swiper-tab">
+  <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0">
+    <text bindtap="clickTab" data-current="0">来访</text>
+    <view class="bottom-border {{currentTab==0?'active':''}}"></view>
+  </view>
+  <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1">
+    <text bindtap="clickTab" data-current="1">查看</text>
+    <view class="bottom-border {{currentTab==1?'active':''}}"></view>
+  </view>
+</view>
+
+<swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
+  <swiper-item>
+    <block wx:if='{{Visit}}'>
+      <view class='no-pic'></view>
+      <view class='no-title'>还没有人访问过～</view>
+      <view class='no-title2'>分享到好友和朋友圈可快速曝光哦</view>
+      <navigator class='back-index' hover-class='none' url='../index/index'>立即去分享</navigator>
+    </block>
+
+    <view class='list-box'>
+      <view class='left'>
+        <image src='../../images/shanchu/shop-logo.png'></image>
+        <text>张丽英</text>
+      </view>
+      <view class='right'>2018.10</view>
+    </view>
+
+
+  </swiper-item>
+  <swiper-item>
+    <block wx:if='{{View}}'>
+      <view class='no-pic'></view>
+      <view class='no-title'>没有访问过别的店铺哦～</view>
+    </block>
+    <view class='list-box'>
+      <view class='left'>
+        <image src='../../images/shanchu/shop-logo.png'></image>
+        <text>张丽英</text>
+      </view>
+      <view class='right'>2018.10</view>
+    </view>
+  </swiper-item>
+</swiper>

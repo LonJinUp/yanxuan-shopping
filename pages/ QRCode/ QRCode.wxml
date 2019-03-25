@@ -1,0 +1,50 @@
+<!--pages/MyProfessor/MyProfessor.wxml-->
+<!-- remind  -->
+<view class='remind'>
+  <image src='../../images/tanhao.png'></image>
+  <text>在微信“我”的界面，获取微信号和微信名片</text>
+</view>
+<!-- remind end -->
+
+<!-- professor -->
+<block wx:if='{{ShowMsg==true}}'>
+
+  <!-- professor -->
+  <view class='weChat'>
+    <view class='left'>
+      <text>微信号</text>
+      <input type='text' placeholder='' confirm-type='done' bindinput='btnChange'></input>
+    </view>
+    <view class='right' data-num='{{weChat}}'></view>
+  </view>
+  <view class='my-professor'>
+    <view class='title'>上传您的微信二维码</view>
+    <view class='content'>上传的微信号信息仅导师可见，请放心上传</view>
+  </view>
+  <view class='weChat-img' bindtap='selectImage'>
+    <image src='../../images/jia-3.png'></image>
+  </view>
+  <view class="save2" bindtap='SaveImg'>保存</view>
+  <!-- professor end -->
+
+
+  <!-- professor end -->
+</block>
+
+
+<block wx:if='{{ShowMsg==false}}'>
+  <view class='weChat'>
+    <view class='left'>
+      <text>微信号</text>
+      <input type='text' placeholder='{{weChat}}' disabled="ture" confirm-type='done'></input>
+    </view>
+    <view class='right' data-num='{{weChat}}'></view>
+  </view>
+
+  <view class='weChat-img2'>
+    <image src='../../images/shanchu/daoshi.png'></image>
+  </view>
+  <view class='ajain' bindtap='Renew'>重新上传</view>
+
+  <view class="save">保存</view>
+</block>

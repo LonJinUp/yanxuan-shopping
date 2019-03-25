@@ -110,7 +110,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    Login.denglu(options)
+    // Login.denglu(options)
+    var that = this;
+    if (options.spid) {
+      app.globalData.spid = options.spid
+    }
+    app.setUserInfo();
 
 
   },
@@ -128,7 +133,7 @@ Page({
   onShow: function() {
     //首页接口
     this.IndexData();
-    this.GoodStuff()
+    // this.GoodStuff();
 
   },
 
@@ -163,8 +168,6 @@ Page({
 
   //首页数据
   IndexData: function() {
-    let uid = globalData.uid;
-    console.log(globalData.uid);
     var that = this;
     wx.showToast({
       title: '加载中',
@@ -207,33 +210,33 @@ Page({
   },
 
   //严选好货
-  GoodStuff: function() {
-    var that = this;
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-    });
-    wx.request({
-      url: Login.url + '/routine/auth_api/getBestProduct',
-      data: Storage.get("uid"),
-      method: "GET",
-      dataType: JSON,
-      header: "application / json",
-      success: function(res) {
-        var res = JSON.parse(res.data);
-        wx.hideLoading();
-        if (res.code == 200) {
+  // GoodStuff: function() {
+  //   var that = this;
+  //   wx.showToast({
+  //     title: '加载中',
+  //     icon: 'loading',
+  //   });
+  //   wx.request({
+  //     url: Login.url + '/routine/auth_api/getBestProduct',
+  //     data: Storage.get("uid"),
+  //     method: "GET",
+  //     dataType: JSON,
+  //     header: "application / json",
+  //     success: function(res) {
+  //       var res = JSON.parse(res.data);
+  //       wx.hideLoading();
+  //       if (res.code == 200) {
           
-        }else{
-          console.log('加载失败')
-        }
-      },
-      fail: function() {
+  //       }else{
+  //         console.log('加载失败')
+  //       }
+  //     },
+  //     fail: function() {
 
-      },
+  //     },
 
-    })
-  },
+  //   })
+  // },
 
   /**
    * 用户点击右上角分享

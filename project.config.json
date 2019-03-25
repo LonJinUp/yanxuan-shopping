@@ -37,13 +37,20 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "商品详情",
 					"pathName": "pages/SecondaryPage/product/index",
 					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "邀请",
+					"pathName": "pages/load/load",
+					"query": "invite_uid=111",
 					"scene": null
 				}
 			]

@@ -1,0 +1,39 @@
+<!--pages/MyProfessor/MyProfessor.wxml-->
+<!-- remind  -->
+<view class='remind'>
+  <image src='../../images/tanhao.png'></image>
+  <text>秒杀、商家直发商品暂不支持使用优惠券</text>
+</view>
+<!-- remind end -->
+<view class='Professor-title'>想要迅速玩转全民严选，你可以添加导师微信，获取开店秘
+籍哦</view>
+
+<!-- no-professor -->
+<block wx:if='{{ProfessorHide}}'>
+  <view class='no-professor'></view>
+  <view class='no-professor-title'>
+  你的导师暂时没有填写自己的信息
+  我们会尽快邀请填写～          
+  </view>
+</block>
+<!-- no-professor end -->
+
+<!-- professor -->
+<view class='weChat'>
+  <view class='left'>
+    <text>微信号</text>
+    <text>{{weChat}}</text>
+  </view>
+  <view class='right' bindtap='copy' data-num='{{weChat}}'>复制</view>
+</view>
+<navigator class='my-professor'>
+  <view class='title'>上传您的微信二维码</view>
+  <view class='content'>上传的微信号信息仅导师可见，请放心上传</view>
+</navigator>
+
+<view class='weChat-img'>
+  <image src='../../images/shanchu/daoshi.png'></image>
+</view>
+
+<view class='save' bindtap='SaveImg'>保存</view>
+<!-- professor end -->

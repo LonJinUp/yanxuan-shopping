@@ -1,0 +1,3 @@
+<!--pages/notification/notification.wxml-->
+<view class='no-notification'></view>
+<view class='title'>暂时还没有消息记录～</view>

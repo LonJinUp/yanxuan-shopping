@@ -1,0 +1,61 @@
+<!--pages/CheckIn/CheckIn.wxml-->
+<!-- banner -->
+<view class='banner'>
+  <view class='title'>店主每日签到</view>
+  <view class='banner-content'>
+    <view class='top'>Strict selection</view>
+    <view class='title'>连续签到相应的天数可以获取优惠券~</view>
+    <view class='content'>
+      <view class='first'>
+        <view class='items active'>1</view>
+        <view class='border active'></view>
+        <view class='items active'>2</view>
+        <view class='border active'></view>
+        <view class='items yes'>
+          <view class='value'>¥5</view>
+        </view>
+        <view class='border active'></view>
+        <view class='items active'>4</view>
+      </view>
+      <view class='second'>
+        <view class='border'></view>
+      </view>
+      <view class='first'>
+        <view class='items'>8</view>
+        <view class='border'></view>
+        <view class='items'>7</view>
+        <view class='border'></view>
+        <view class='items'>6</view>
+        <view class='border'></view>
+        <view class='items no'>
+          <view class='value'>¥5</view>
+        </view>
+      </view>
+      <view class='third'>
+        <view class='border'></view>
+      </view>
+      <view class='first'>
+        <view class='items'>9</view>
+        <view class='border'></view>
+        <view class='items no'>
+          <view class='value'>￥30</view>
+        </view>
+      </view>
+    </view>
+
+    <view class='check'>签到</view>
+  </view>
+</view>
+<!-- banner end -->
+<view style='width:100%;height:620rpx'></view>
+<!-- rule -->
+<view class='rule'>
+  <view class='title'>规则说明</view>
+  <view class='content'>
+    <view>1．每个店主每天可以签到一次，进入签到页请手动点击“签到”按钮完成签到。签到以10天为一个周期，10天后的第一天重新开始计算。</view>
+    <view>2．店主连续签到3天，可获1张5元优惠券；连续签到5天，获17张5元优惠券、1张10元优惠券；连续签到10天，可获2张5元优惠券、2张10元优惠券（5元优惠券满50减5，10元优惠券满100减10。</view>
+  <view>3．优惠券直充到店主账户，可在“个人中心－优惠券”查看；优惠券可分享或自用，有效期为自领取后7天内使用。</view>
+  </view>
+</view>
+
+<!-- rule end -->

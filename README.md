@@ -9,19 +9,28 @@
      * ---class分类
      * ---buy 购物车
      * ---login 登陆
-     * SecondaryPage 二级三级页面(文件夹)
-        * ---MyFriend 我的朋友
-        * ---OrderDetails 订单明细
-        * ---income 我的收益
-        * ---MyIncome 销售明细
-        * ---LoadPay 等待支付
-        * ---Settlement 结算页面
-        * ---product 商品详情
-        * ---Productlist 商品列表
-        * ---AllOrders 全部订单
-        * ---PendingPayment 待付款
-        * ---coupon 优惠券
-        * ---Address 地址管理（添加地址）
+     * ---loading等待界面,
+     * ---load登陆授权
+     * ---notification消息通知
+     * ---BrowseRecord浏览记录
+     * ---MyFriend 我的朋友
+     * ---OrderDetails 订单明细
+     * ---income 我的收益
+     * ---MyIncome 销售明细
+     * ---LoadPay 等待支付
+     * ---Settlement 结算页面
+     * ---product 商品详情
+     * ---Productlist 商品列表
+     * ---AllOrders 全部订单
+     * ---PendingPayment 待付款
+     * ---coupon 优惠券
+     * ---Address 地址管理（添加地址）
+     * ---QRCode 我的信息（上传二维码，下级可以看到）
+     * ---MyProfessor 我的导师
+     * ---CheckIn 签到
+
+
+
 * ---pubilc 公共方法        
       * ---js 公共js(文件夹)
         * ---login.js 其他页面鉴定用户是否登陆
