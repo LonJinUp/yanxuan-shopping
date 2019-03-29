@@ -1,0 +1,64 @@
+<!--pages/material/material.wxml-->
+<!-- tab -->
+<view class="swiper-tab">
+  <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0">
+    <text bindtap="clickTab" data-current="0">全部</text>
+    <view class="bottom-border {{currentTab==0?'active':''}}"></view>
+  </view>
+  <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1">
+    <text bindtap="clickTab" data-current="1">商品素材</text>
+    <view class="bottom-border {{currentTab==1?'active':''}}"></view>
+  </view>
+  <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2">
+    <text bindtap="clickTab" data-current="2">礼包素材</text>
+    <view class="bottom-border {{currentTab==2?'active':''}}"></view>
+  </view>
+   <view class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3">
+    <text bindtap="clickTab" data-current="3">营销素材</text>
+    <view class="bottom-border {{currentTab==3?'active':''}}"></view>
+  </view>
+</view>
+
+<swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
+  <swiper-item>
+   <view class='material'>
+     <view class='item'>
+       <view class='user'>
+        <view class='left'>
+          <image src='../../images/shanchu/shop-logo.png'></image>
+          <text>严选管家</text>
+        </view>
+        <view class='right'>保存文案及图片</view>
+      </view>
+      <view class='title'>
+        <view>营销素材</view>
+        <view>五一邀约海报</view>
+      </view>
+      <view class='content'>爱买买买  也爱货比三家   清明节在全民严选开店  自买省钱  分享赚钱 想买的直接包邮送到家  因              </view>
+      <view class='image-box'>
+         <view class='items'>
+             <image src='../../images/shanchu/content.png'></image>
+         </view>
+         <view class='items'>
+             <image src='../../images/shanchu/content.png'></image>
+         </view>
+         <view class='items'>
+             <image src='../../images/shanchu/content.png'></image>
+         </view>
+         
+      </view>
+     </view>
+     
+   </view>
+  </swiper-item>
+  <swiper-item>
+      <view class='coupon-list'>2</view>
+  </swiper-item>
+  <swiper-item>
+      <view class='coupon-list'>3</view>
+  </swiper-item>
+  <swiper-item>
+      <view class='coupon-list'>4</view>
+  </swiper-item>
+</swiper>
+<!-- tab end -->

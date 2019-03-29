@@ -28,6 +28,8 @@
      * ---QRCode 我的信息（上传二维码，下级可以看到）
      * ---MyProfessor 我的导师
      * ---CheckIn 签到
+     * ---material 素材库
+     * ---list 商品清单
 
 
 

@@ -1,52 +1,17 @@
-// pages/mine/mine.js
-const app = getApp();
-const globalData = getApp().globalData
+// pages/list/list.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 用户头像
-    UserPic:"",
-    UserName:"",
-    id:"",
-    //点击弹出分享
-    ShowShare: false,
+    list:false
   },
-  //弹出分享
-  ShowShare: function (e) {
-    var that = this;
-    that.setData({
-      ShowShare: true,
-    })
-  },
-  //点击关闭
-  HideShare: function (e) {
-    var that = this;
-    that.setData({
-      ShowShare: false
-    })
-  },
-  // 拨打电话
-  call:function(){
-    wx.makePhoneCall({
-      phoneNumber: '18534625325' 
-    })
-  },
-  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(globalData)
-    var that=this;
-    that.setData({
-      UserPic: globalData.data.avatarUrl,
-      UserName: globalData.data.nickName,
-      id: globalData.data.uid,
-    })
 
   },
 

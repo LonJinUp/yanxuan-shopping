@@ -1,0 +1,18 @@
+<!--pages/list/list.wxml-->
+<block wx:if='{{list}}'>
+  <view class='no-list'></view>
+  <view class='title'>你还没有商品清单</view>
+  <view class='content'>创建商品清单，可以一次推荐多个商品哦</view>
+  <view class='add-btn'>创建商品清单</view>
+</block>
+
+<block wx:else>
+  <view class='border'></view>
+  <view class='list-items'>
+    <view class='items-title'>
+      <text></text>
+      <text>运动装备</text>
+    </view>
+    <view class='list'></view>
+  </view>
+</block>

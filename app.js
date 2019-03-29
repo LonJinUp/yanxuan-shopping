@@ -8,7 +8,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    that.getRoutineStyle();
+  
   },
   globalData: {
     routineStyle: '#ffffff',
@@ -18,28 +18,12 @@ App({
     urlImages: '',
     url: 'https://vc.extouz.com'
   },
-  getRoutineStyle: function () {
-    var that = this;
-    wx.request({
-      url: that.globalData.url + '/routine/login/get_routine_style',
-      method: 'post',
-      dataType  : 'json',
-      success: function (res) {
-        that.globalData.routineStyle = res.data.data.routine_style;
-        that.setBarColor();
-      }
-    })
-  },
-  setBarColor: function () {
-    var that = this;
-    wx.setNavigationBarColor({
-      frontColor: '#000000',
-      backgroundColor: that.globalData.routineStyle,
-    })
-  },
+ 
+
   setUserInfo: function () {
     var that = this;
-    if (that.globalData.uid == null) {//是否存在用户信息，如果不存在跳转到首页123456
+    console.log(that.globalData)
+    if (that.globalData.uid == null) {//是否存在用户信息，如果不存在跳转到首页
       wx.showToast({
         title: '用户信息获取失败!',
         icon: 'none',

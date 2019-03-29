@@ -1,52 +1,32 @@
-// pages/mine/mine.js
-const app = getApp();
-const globalData = getApp().globalData
+// pages/AddList/AddList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 用户头像
-    UserPic:"",
-    UserName:"",
-    id:"",
-    //点击弹出分享
-    ShowShare: false,
+    titleLength:0,
+    contentlength:0,
   },
-  //弹出分享
-  ShowShare: function (e) {
+  //清单名称右侧 输入长度
+  valuechange:function(e){
+   var that=this;
+   console.log(e)
+   that.setData({
+     titleLength: e.detail.value.length
+   })
+  },
+  valuechange2:function(e){
     var that = this;
+    console.log(e)
     that.setData({
-      ShowShare: true,
+      contentlength: e.detail.value.length
     })
   },
-  //点击关闭
-  HideShare: function (e) {
-    var that = this;
-    that.setData({
-      ShowShare: false
-    })
-  },
-  // 拨打电话
-  call:function(){
-    wx.makePhoneCall({
-      phoneNumber: '18534625325' 
-    })
-  },
-  
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(globalData)
-    var that=this;
-    that.setData({
-      UserPic: globalData.data.avatarUrl,
-      UserName: globalData.data.nickName,
-      id: globalData.data.uid,
-    })
 
   },
 

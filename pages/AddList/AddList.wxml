@@ -1,0 +1,15 @@
+<!--pages/AddList/AddList.wxml-->
+
+<view class='border'></view>
+<view class='list-name'>
+  <input type='text' placeholder='请输入清单名称' bindinput='valuechange' maxlength='20'></input>
+  <text>{{titleLength}}/20</text>
+</view>
+<view class='list-content'>
+  <textarea placeholder='描述清单商品特点' maxlength='140'></textarea>
+  <view class='number'>{{contentlength}}/140</view>
+</view>
+
+<view class='save-list'>
+  <view class='save'>保存</view>
+</view>

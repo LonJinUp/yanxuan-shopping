@@ -1,52 +1,38 @@
-// pages/mine/mine.js
-const app = getApp();
-const globalData = getApp().globalData
+// pages/SecondaryPage/OrderDetails/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 用户头像
-    UserPic:"",
-    UserName:"",
-    id:"",
-    //点击弹出分享
-    ShowShare: false,
-  },
-  //弹出分享
-  ShowShare: function (e) {
-    var that = this;
-    that.setData({
-      ShowShare: true,
-    })
-  },
-  //点击关闭
-  HideShare: function (e) {
-    var that = this;
-    that.setData({
-      ShowShare: false
-    })
-  },
-  // 拨打电话
-  call:function(){
-    wx.makePhoneCall({
-      phoneNumber: '18534625325' 
-    })
-  },
+    //选项卡
+    currentTab: 0,
   
+  },
+
+  //滑动切换
+  swiperTab: function (e) {
+    var that = this;
+    that.setData({
+      currentTab: e.detail.current
+    });
+  },
+  //点击切换
+  clickTab: function (e) {
+    var that = this;
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(globalData)
-    var that=this;
-    that.setData({
-      UserPic: globalData.data.avatarUrl,
-      UserName: globalData.data.nickName,
-      id: globalData.data.uid,
-    })
 
   },
 

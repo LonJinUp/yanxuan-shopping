@@ -1,5 +1,11 @@
 {
   "pages": [
+    "pages/loading/loading",
+    "pages/index/index",
+    "pages/list/list",
+    "pages/AddList/AddList",
+    "pages/material/material",
+    "pages/my/index",
     "pages/CheckIn/CheckIn",
     "pages/MyProfessor/MyProfessor",
     "pages/ QRCode/ QRCode",
@@ -15,14 +21,11 @@
     "pages/coupon/index",
     "pages/AllOrders/index",
     "pages/Address/index",
-    "pages/index/index",
     "pages/notification/notification",
     "pages/BrowseRecord/BrowseRecord",
     "pages/login/login",
-    "pages/my/index",
     "pages/class/index",
     "pages/buy/index",
-    "pages/loading/loading",
     "pages/load/load"
   ],
   "window": {

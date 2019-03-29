@@ -24,7 +24,7 @@ Page({
     clock: 0,
     //本周爆款
     hot_product: "",
-
+    likeList:"",
 
     //商品
     commodity: [{
@@ -110,14 +110,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // Login.denglu(options)
     var that = this;
+    console.log(globalData)
     if (options.spid) {
       app.globalData.spid = options.spid
     }
     app.setUserInfo();
-
-
   },
 
   /**
@@ -159,12 +157,7 @@ Page({
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
 
-  },
 
   //首页数据
   IndexData: function() {
@@ -175,7 +168,9 @@ Page({
     });
     wx.request({
       url: Login.url + '/routine/auth_api/index',
-      data:{uid:uid},
+      data: { 
+        uid: globalData.uid
+        },
       method: "GET",
       dataType: JSON,
       header: "application / json",
@@ -183,20 +178,19 @@ Page({
         var res = JSON.parse(res.data);
         wx.hideLoading();
         if (res.code == 200) {
-          let spike = res.data.storeSeckill[0];
-          let nowtime = Math.round(new Date().getTime() / 1000).toString();
-          let stop = spike.stop_time;
-          var now = stop - nowtime;
-          var now2 = now * 1000;
-          /* 毫秒级倒计时 */
-          that.time(now2);
+          // let spike = res.data.storeSeckill[0];
+          // let nowtime = Math.round(new Date().getTime() / 1000).toString();
+          // let stop = spike.stop_time;
+          // var now = stop - nowtime;
+          // var now2 = now * 1000;
+          // /* 毫秒级倒计时 */
+          // that.time(now2);
+          
           that.setData({
-            Spike: res.data.storeSeckill[0],
-            msgList: res.data.roll_news,
             banner: res.data.banner,
-            hot_product: res.data.hot_product,
-            clock: now2,
-          })
+            msgList: res.data.roll_news,
+            hot_product: res.data.hot_product
+           })
         } else {
 
         }
@@ -208,35 +202,89 @@ Page({
 
     })
   },
+  /**
+ * 页面上拉触底事件的处理函数
+ */
+  onReachBottom: function (p) {
+    var that = this;
+    var limit = 20;
+    var offset = that.data.offset;
+    if (!offset) offset = 1;
+    var startpage = limit * offset;
+    var header = {
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+    wx.request({
+      url: app.globalData.url + '/routine/auth_api/getBestProduct?uid=' + app.globalData.uid,
+      data: { limit: limit, offset: startpage },
+      method: 'POST',
+      header: header,
+      success: function (res) {
+        var len = res.data.data.length;
+        for (var i = 0; i < len; i++) {
+          that.data.likeList.push(res.data.data[i])
+        }
+        that.setData({
+          offset: offset + 1,
+          likeList: that.data.likeList
+        });
+        if (len < limit) {
+          that.setData({
+            title: "数据已经加载完成",
+            hidden: true
+          });
+          return false;
+        }
+      },
+      fail: function (res) {
+        console.log('submit fail');
+      },
+      complete: function (res) {
+        console.log('submit complete');
+      }
+    })
+  },
 
   //严选好货
-  // GoodStuff: function() {
-  //   var that = this;
-  //   wx.showToast({
-  //     title: '加载中',
-  //     icon: 'loading',
-  //   });
-  //   wx.request({
-  //     url: Login.url + '/routine/auth_api/getBestProduct',
-  //     data: Storage.get("uid"),
-  //     method: "GET",
-  //     dataType: JSON,
-  //     header: "application / json",
-  //     success: function(res) {
-  //       var res = JSON.parse(res.data);
-  //       wx.hideLoading();
-  //       if (res.code == 200) {
-          
-  //       }else{
-  //         console.log('加载失败')
-  //       }
-  //     },
-  //     fail: function() {
-
-  //     },
-
-  //   })
-  // },
+  GoodStuff: function() {
+    var that = this;
+    var limit = 5;
+    var offset = that.data.offset;
+    if (!offset) offset = 1;
+    var startpage = limit * offset;
+    var header = {
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+    wx.request({
+      url: app.globalData.url + '/routine/auth_api/getBestProduct?uid=' + app.globalData.uid,
+      data: { limit: limit, offset: startpage },
+      method: 'POST',
+      header: header,
+      success: function (res) {
+        var len = res.data.data.length;
+        for (var i = 0; i < len; i++) {
+          that.data.likeList.push(res.data.data[i])
+        }
+        that.setData({
+          offset: offset + 1,
+          likeList: that.data.likeList
+        });
+        if (len < limit) {
+          that.setData({
+            title: "数据已经加载完成",
+            hidden: true
+          });
+          return false;
+        }
+      },
+      fail: function (res) {
+        console.log('submit fail');
+      },
+      complete: function (res) {
+        console.log('submit complete');
+      }
+    })
+  },
 
   /**
    * 用户点击右上角分享

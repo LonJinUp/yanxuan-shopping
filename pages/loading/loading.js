@@ -15,8 +15,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
     var that = this;
-    app.setBarColor();
     if (options.scene) app.globalData.spid = options.scene;
     that.setSetting();
   },
@@ -29,8 +29,10 @@ Page({
           wx.navigateTo({
             url: '/pages/load/load',
           })
+          console.log("没状态")
         } else {
           that.getUserInfo();
+          
         }
       }
     })
@@ -55,6 +57,8 @@ Page({
                   info: userInfo
                 },
                 success: function (res) {
+                  console.log(res)
+                  app.globalData.data=res.data.data
                   app.globalData.uid = res.data.data.uid;
                   if (app.globalData.openPages != '' && app.globalData.openPages != undefined) {//跳转到指定页面
                     wx.navigateTo({
