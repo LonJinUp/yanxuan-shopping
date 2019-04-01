@@ -1,20 +1,20 @@
 <!-- swiper -->
 <view class='swiper-box'>
-  <swiper indicator-dots  circular autoplay='true' interval='3000' duration='600' style='background:#fff;padding-top:10rpx'>
-<block wx:for='{{banner}}'>
-  <swiper-item>
-    <view class='items'>
-      <image src='{{item}}'></image>
-    </view>
-  </swiper-item>
-</block>
-</swiper>
+  <swiper indicator-dots circular autoplay='true' interval='3000' duration='600' style='background:#fff;padding-top:10rpx'>
+    <block wx:for='{{storeInfo.slider_image}}'>
+      <swiper-item>
+        <view class='items'>
+          <image src='{{url}}{{item}}'></image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
 </view>
 <!-- swiper -->
 
 <!-- content -->
 <view class='content'>
-<!-- money -->
+  <!-- money -->
   <view class='money-box'>
     <view class='left'>
       <text>￥{{storeInfo.price}}</text>
@@ -34,10 +34,10 @@
         <text>推荐</text>
       </view>
       <view>
-         <view class='join'>
-            <image src='../../images/jia-2.png'></image>
-         </view>
-         <text>加入清单</text>
+        <view class='join'>
+          <image src='../../images/jia-2.png'></image>
+        </view>
+        <text>加入清单</text>
       </view>
     </view>
   </view>
@@ -68,15 +68,15 @@
       </view>
       <text>7天放心退</text>
     </view>
-     <view class='items'>
+    <view class='items'>
       <view class='circle'>
         <view class='circle-items'></view>
       </view>
       <text>假一赔十</text>
     </view>
-     <view class='items' style='margin-left:30rpx'>
+    <!-- <view class='items' style='margin-left:30rpx'>
       <text class='more'>···</text>
-    </view>
+    </view> -->
   </view>
   <!-- Protection end -->
 </view>
@@ -84,12 +84,12 @@
 
 <!-- choose -->
 <view class='choose'>
-  <view class='left' bindtap='ShowShare'>
-    <text>{{productValue[gindex].suk==""?"已选择:":"请选择:"}}</text>
-    <text>{{productValue[gindex].suk}}</text>
+  <view class='left' bindtap='getAttrInfo'>
+    <text>{{attr}}</text>
+    <text>{{attrValue}}</text>
   </view>
   <!-- <view class='right'> -->
-    <image src='../../../images/prev.png'></image>
+  <image src='../../../images/prev.png'></image>
   <!-- </view> -->
 </view>
 <!-- choose end -->
@@ -122,7 +122,7 @@
 <view style='width:100%;height:16rpx;background:#f6f6f6'></view>
 
 <!--  specification -->
-<view class='specification'>
+<!-- <view class='specification'>
   <view class='title'>{{list.name}}</view>
   <view class='specification-item'>
   <block wx:if="{{index < MoreNum}}" wx:for='{{list.links}}' wx:for-item="itemName">
@@ -135,16 +135,17 @@
   <view class='more' bindtap='more' data-more='{{MoreNum}}'>{{MoreText}}
     <image src='{{MoreText=="更多参数" ?"../../images/bottom-1.jpg":"../../images/top-1.jpg"}}'></image>
   </view>
-</view>
+</view> -->
 <!-- specification end -->
 <view style='width:100%;height:16rpx;background:#f6f6f6'></view>
 
 <!-- Graphic -->
 <view class='Graphic'>
   <view class='title'>图文详情</view>
-  <view class='Graphic-pic'>
+  <template is="wxParse" data="{{wxParseData:description.nodes}}" />
+  <!-- <view class='Graphic-pic'>
     <image src='../../images/shanchu/banner.jpg' mode="widthFix"></image>
-  </view>
+  </view> -->
 </view>
 <!-- Graphic end -->
 <view style='width:100%;height:16rpx;background:#f6f6f6'></view>
@@ -152,13 +153,8 @@
 <view class='Graphic'>
   <view class='title'>价格说明</view>
   <view class='PriceText'>
-  店铺中展示的中间未划横线价格为该店铺的销售价，该价格
-是交易成交价，是您最终决定是否购买商品的依据。
-店铺展示的中间划横线价格（显示如¥1000）为参考价，采集
-自品牌专柜标价、商品吊牌价或由品牌供应商提供的正品零
-售价；由于地区、时间的差异性和市场行情波动，品牌专柜标
-价、商品吊牌价可能会与您购物时展示的不一致。该价格仅供
-参考。</view>
+    店铺中展示的中间未划横线价格为该店铺的销售价，该价格 是交易成交价，是您最终决定是否购买商品的依据。 店铺展示的中间划横线价格（显示如¥1000）为参考价，采集 自品牌专柜标价、商品吊牌价或由品牌供应商提供的正品零 售价；由于地区、时间的差异性和市场行情波动，品牌专柜标 价、商品吊牌价可能会与您购物时展示的不一致。该价格仅供 参考。
+  </view>
 </view>
 <!-- Price Description end -->
 <view style='width:100%;height:140rpx;'></view>
@@ -168,14 +164,16 @@
     <image src='../../images/tabBar/index.png'></image>
     <view class='text'>进店铺</view>
   </view>
-   <view class='home' style='position: relative;'>
-      <image src='../../images/tabBar/buy.png'>
-      </image>
-      <view class='text'>购物车</view>
-       <view class='home-num'>10</view>
-   </view>
-   <view class='buy'>购买</view>
-   <view class='share'>卖 (赚￥187.23)</view>
+  <view class='home' style='position: relative;' bindtap='getCar'>
+    <image src='../../images/tabBar/buy.png'>
+    </image>
+    <view class='text'>购物车</view>
+
+    <view class='home-num {{CartCount==0?"active":""}}'>{{CartCount}}</view>
+  </view>
+  <view class='buy' bindtap='goOrder'>购买</view>
+  <!-- <view class='share' bindtap='listenerActionSheet'>卖 (赚￥187.23)</view> -->
+  <button class='share' open-type="share">卖 (赚￥187.23)</button>
 </view>
 <!-- bottom-btn end-->
 
@@ -186,39 +184,48 @@
     <image src='../../images/guanbi.png'></image>
   </view>
   <view class='product-small-pic'>
-    <image src='{{productValue[gindex].image}}'></image>
+    <image src='{{url}}{{productSelect.image}}'></image>
   </view>
   <view class='product-title'>
-    <view class='title'>{{storeInfo.store_name}}</view>
+    <view class='title'>{{productSelect.store_name}}</view>
     <view class='money-box'>
-      <text class='first'>￥{{storeInfo.price}}</text>
-      <text class='first2'>￥{{storeInfo.ot_price}}</text>
+      <text class='first'>￥{{productSelect.price}}</text>
+      <text class='first2'>￥{{productSelect.ot_price}}</text>
     </view>
   </view>
   <!-- border -->
   <view class='border'></view>
   <!-- border end -->
   <view class='size-box'>
-    <view class='title'>选择</view>
-    <view class='size-item'>
-      <block wx:for="{{productValue}}" wx:key="index">
-        <view class="items {{gindex==index?'color':''}}" data-index='{{item.product_id}}'  bindtap='guige' data-current='{{index}}'>{{index}}</view>
-      </block>
-    </view>
+    <block wx:for="{{productAttr}}">
+      <view class='title'>{{item.attr_name}}</view>
+      <view class='size-item' style='width:690rpx'>
+        <view style='width:2rpx;height:100%;float:left'></view>
+        <block wx:for="{{item.attr_value}}" wx:for-item="items" wx:key="index">
+          <view class='size-items {{items.check?"active":""}}' data-key="{{items.attr}}" bindtap='tapsize'>{{items.attr}}</view>
+        </block>
+      </view>
+    </block>
   </view>
   <view class='number-box'>
     <view class='title'>数量</view>
     <view class='buynum'>
-            <view class='minus {{BuyNumber>1? "active" :" "}}' bindtap='minus' data-index="{{index}}">-</view>
-            <view class='num'>{{BuyNumber}}</view>
-            <view class='add active' bindtap='add' data-index="{{BuyNumber}}">+</view>
-          </view>
+      <view class='minus {{BuyNumber>1? "active" :" "}}' bindtap="bindMinus" data-index="{{index}}">-</view>
+      <input class='num' type="number" value='{{num}}' bindblur='setNumber' />
+      <view class='add active' bindtap='bindPlus' data-index="{{index}}">+</view>
+    </view>
+
+
+
+
   </view>
   <view class='bottom-box'>
-    <view class='left'>加入购物车</view>
-    <view class='right'>立即购买</view>
+    <view class='left' bindtap='parameterShow'>加入购物车</view>
+    <form bindsubmit="subBuy" report-submit='true'>
+      <button class='foot-wrapper right' form-type='submit'>确定</button>
+    </form>
+    <!-- <view class='right' bindtap='subBuy'>确定</view> -->
   </view>
 </view>
 <!-- showModal end -->
-
-
+<import src="/wxParse/wxParse.wxml" />

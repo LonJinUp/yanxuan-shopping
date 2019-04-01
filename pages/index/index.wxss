@@ -181,6 +181,19 @@ width:24rpx;
     align-items: center;
     justify-content: space-between;
 }
+.activity-top .share{
+  width:116rpx;
+  height:45rpx;
+  background:rgba(255,255,255,1);
+  border-radius:23rpx;
+  float: right;
+  font-size:24rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(255,193,73,1);
+  text-align: center;
+  line-height: 45rpx;
+}
 .activity-top .title{
   font-size: 30rpx;
   font-family: PingFangSC;

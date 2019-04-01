@@ -28,19 +28,19 @@
   </view>
   <view class='Features-item'>
     <view class='Features-icon'>
-      <image src='../../images/Check.png'></image>
-    </view>
-  </view>
-  <view class='Features-item'>
-    <view class='Features-icon'>
       <image src='../../images/Newcomer.png'></image>
     </view>
   </view>
-  <view class='Features-item'>
+  <navigator url='../CheckIn/CheckIn' hover-class='none' class='Features-item'>
+    <view class='Features-icon'>
+      <image src='../../images/Check.png'></image>
+    </view>
+  </navigator>
+  <navigator url='../material/material' hover-class='none' class='Features-item'>
     <view class='Features-icon'>
       <image src='../../images/material.png'></image>
     </view>
-  </view>
+  </navigator>
 </view>
 <!-- Features end -->
 
@@ -81,7 +81,7 @@
       </view>
     </view>
     <view class='content'>
-      <navigator url="../SecondaryPage/product/index?id={{Spike.id}}"class='left' style='background:url("{{Spike.image}}")no-repeat center center/100% 100%'>
+      <navigator url="../SecondaryPage/product/index?id={{Spike.id}}" class='left' style='background:url("{{Spike.image}}")no-repeat center center/100% 100%'>
         <view class='Triangle'></view>
       </navigator>
       <view class='right'>
@@ -116,20 +116,23 @@
         <view class='title-small'>千万好货 尽在全民严选</view>
       </view>
       <view class='right'>
-        <!-- <text class='iconfont time'></text>
-        <text class='clock'>{{clock}}</text> -->
+        <view class='box'></view>
+        <view class='share'>分享赚</view>
       </view>
     </view>
     <view class='content content-3'>
       <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" class='good-stuff'>
-        <view class='item' wx:for='{{hot_product}}'>
-          <image src='{{item.image}}'></image>
-          <view class='title'>{{item.store_name}}</view>
-          <view class='money-box'>
-            <view class='money'>￥{{item.price}}</view>
-            <view class='makemoney'>赚{{item.price}}</view>
-          </view>
-        </view>
+        <block wx:for='{{hot_product}}'>
+          <navigator class='item' url='../product/index?id={{item.id}}' hover-class='none'>
+            <image src='{{item.image}}'></image>
+            <view class='title'>{{item.store_name}}</view>
+            <view class='money-box'>
+              <view class='money'>￥{{item.price}}</view>
+              <view class='makemoney'>赚{{item.price}}</view>
+            </view>
+          </navigator>
+        </block>
+
       </scroll-view>
     </view>
   </view>
@@ -144,17 +147,19 @@
   </view>
   <!-- content -->
   <view class='content'>
-    <view class='item' wx:for="{{commodity}}">
-      <image src='{{item.pic}}'>
-        <view class='share'>分享赚</view>
-      </image>
-      <text class='commodity-title'>{{item.name}}</text>
-      <view class='commodity-money'>
-        <text>￥{{item.money}}</text>
-        <text>赚{{item.makemoney}}</text>
-        <text>{{item.Purchased}}人已购买</text>
-      </view>
-    </view>
+    <block wx:for="{{likeList}}">
+      <navigator hover-class="none" url="/pages/product/index?id={{item.id}}" class='item'>
+        <image src='{{url}}{{item.image}}'>
+          <view class='share'>分享赚</view>
+        </image>
+        <text class='commodity-title'>{{item.store_name}}</text>
+        <view class='commodity-money'>
+          <text>￥{{item.price}}</text>
+          <text>赚200</text>
+          <text>200人已购买</text>
+        </view>
+      </navigator>
+    </block>
   </view>
 </view>
 <!-- commodity end -->

@@ -24,7 +24,7 @@ Page({
     clock: 0,
     //本周爆款
     hot_product: "",
-    likeList:"",
+    likeList: [],
 
     //商品
     commodity: [{
@@ -111,7 +111,6 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
-    console.log(globalData)
     if (options.spid) {
       app.globalData.spid = options.spid
     }
@@ -168,9 +167,9 @@ Page({
     });
     wx.request({
       url: Login.url + '/routine/auth_api/index',
-      data: { 
+      data: {
         uid: globalData.uid
-        },
+      },
       method: "GET",
       dataType: JSON,
       header: "application / json",
@@ -185,12 +184,13 @@ Page({
           // var now2 = now * 1000;
           // /* 毫秒级倒计时 */
           // that.time(now2);
-          
+
           that.setData({
             banner: res.data.banner,
             msgList: res.data.roll_news,
-            hot_product: res.data.hot_product
-           })
+            hot_product: res.data.hot_product,
+
+          })
         } else {
 
         }
@@ -203,10 +203,12 @@ Page({
     })
   },
   /**
- * 页面上拉触底事件的处理函数
- */
-  onReachBottom: function (p) {
+   * 页面上拉触底事件的处理函数
+   */
+  //严选好物
+  onReachBottom: function(p) {
     var that = this;
+    console.log(that.data)
     var limit = 20;
     var offset = that.data.offset;
     if (!offset) offset = 1;
@@ -216,13 +218,19 @@ Page({
     };
     wx.request({
       url: app.globalData.url + '/routine/auth_api/getBestProduct?uid=' + app.globalData.uid,
-      data: { limit: limit, offset: startpage },
+      data: {
+        limit: limit,
+        offset: startpage
+      },
       method: 'POST',
       header: header,
-      success: function (res) {
-        var len = res.data.data.length;
+      success: function(res) {
+
+        console.log(res.data.data.best_product);
+        var len = res.data.data.best_product.length;
+
         for (var i = 0; i < len; i++) {
-          that.data.likeList.push(res.data.data[i])
+          that.data.likeList.push(res.data.data.best_product[i])
         }
         that.setData({
           offset: offset + 1,
@@ -236,62 +244,73 @@ Page({
           return false;
         }
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log('submit fail');
       },
-      complete: function (res) {
+      complete: function(res) {
         console.log('submit complete');
       }
     })
   },
 
   //严选好货
-  GoodStuff: function() {
-    var that = this;
-    var limit = 5;
-    var offset = that.data.offset;
-    if (!offset) offset = 1;
-    var startpage = limit * offset;
-    var header = {
-      'content-type': 'application/x-www-form-urlencoded',
-    };
-    wx.request({
-      url: app.globalData.url + '/routine/auth_api/getBestProduct?uid=' + app.globalData.uid,
-      data: { limit: limit, offset: startpage },
-      method: 'POST',
-      header: header,
-      success: function (res) {
-        var len = res.data.data.length;
-        for (var i = 0; i < len; i++) {
-          that.data.likeList.push(res.data.data[i])
-        }
-        that.setData({
-          offset: offset + 1,
-          likeList: that.data.likeList
-        });
-        if (len < limit) {
-          that.setData({
-            title: "数据已经加载完成",
-            hidden: true
-          });
-          return false;
-        }
-      },
-      fail: function (res) {
-        console.log('submit fail');
-      },
-      complete: function (res) {
-        console.log('submit complete');
-      }
-    })
-  },
+  // GoodStuff: function() {
+  //   var that = this;
+  //   var limit = 5;
+  //   var offset = that.data.offset;
+  //   if (!offset) offset = 1;
+  //   var startpage = limit * offset;
+  //   var header = {
+  //     'content-type': 'application/x-www-form-urlencoded',
+  //   };
+  //   wx.request({
+  //     url: app.globalData.url + '/routine/auth_api/getBestProduct?uid=' + app.globalData.uid,
+  //     data: { limit: limit, offset: startpage },
+  //     method: 'POST',
+  //     header: header,
+  //     success: function (res) {
+  //       var len = res.data.data.length;
+  //       for (var i = 0; i < len; i++) {
+  //         that.data.likeList.push(res.data.data[i])
+  //       }
+  //       that.setData({
+  //         offset: offset + 1,
+  //         likeList: that.data.likeList
+  //       });
+  //       if (len < limit) {
+  //         that.setData({
+  //           title: "数据已经加载完成",
+  //           hidden: true
+  //         });
+  //         return false;
+  //       }
+  //     },
+  //     fail: function (res) {
+  //       console.log('submit fail');
+  //     },
+  //     complete: function (res) {
+  //       console.log('submit complete');
+  //     }
+  //   })
+  // },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
-  },
-
-
+    var that = this;
+    return {
+      title: '小程序',
+      path: '/pages/index/index?spid=' + app.globalData.uid,
+      // imageUrl: that.data.url + that.data.product.image,
+      success: function() {
+        console.log("cuccess")
+        wx.showToast({
+          title: '分享成功',
+          icon: 'success',
+          duration: 2000
+        })
+      }
+    }
+  }  
 })

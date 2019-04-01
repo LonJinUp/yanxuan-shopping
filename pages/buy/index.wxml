@@ -1,48 +1,102 @@
-<view class='top-box'>
-  <image src='../../images/aixin.png'></image>
-  你正在浏览我的店铺
-</view>
+<form>
+  <view class='head flex'>
+    <view class='txt'>购物数量({{cartNum}})</view>
+    <view class='btn' bindtap='btntap' wx:if='{{!foothidden}}'>
+      <image src='../../images/bianji.png' style='width:35rpx;height:33rpx;margin-right:10rpx'></image>
+      编辑商品
+    </view>
+    <view class='btn' bindtap='btntap' wx:if='{{foothidden}}'>
+      <image src='../../images/dui-2.png' style='width:35rpx;height:33rpx;margin-right:10rpx'></image>
+      取消编辑
+    </view>
+  </view>
 
-<scroll-view class='shoppingCartMain' scroll-y="true" style='height:{{windowHeight-79-92}}rpx' wx:if="{{cartItems.length>0}}">
-  <block wx:for="{{cartItems}}" wx:key="key">
-    <view class='shoppingCartMainList'>
-      <view class='innerText' bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}">
-        <checkbox class="ws-checkbox"bindtap='isSelect' checked="{{item.isSelect}}" data-index="{{index}}" />
-        <image src='{{ApiRootUrl}}{{item.thumbnail}}'></image>
-        <view class='shoppingCartMainListMsg'>
-          <view class='one textoverflow'>
-            <text class='name'>{{item.name}}</text>
-          </view>
-          <!-- <view class='abstract textoverflow'>{{item.caption}}</view> -->
+  <view class='car-list'>
+    <block wx:for="{{cartList}}" wx:key>
 
-          <view style='height:52rpx;'>
-            <view wx:if="{{item.specifications.length>0}}" class='spec'>{{item.specifications}}</view>
-          </view>
-          <view class='price'>￥{{item.price}}</view>
-          <view class='buynum'>
-            <view class='minus {{item.quantity>1? "active" :" "}}' bindtap='minus' data-index="{{index}}">-</view>
-            <view class='num'>{{item.quantity}}</view>
-            <view class='add active' bindtap='add' data-index="{{index}}">+</view>
+      <view class='shoppingCartMainList'>
+        <view class='innerText' data-index='{{index}}' bindtap='switchSelect' style="{{item.txtStyle}}">
+          <label class="checkbox">
+            <checkbox class="ws-checkbox" bindtap='isSelect' value="{{index}}" checked="{{item.checked}}" data-index="{{index}}" />
+          </label>
+          <image src='{{url}}{{item.productInfo.image}}'></image>
+          <view class='shoppingCartMainListMsg'>
+            <view class='one textoverflow'>
+              <text class='name'>{{item.productInfo.store_name}}</text>
+            </view>
+             <view style='height:52rpx;margin-top:20rpx'>
+              <view class='spec' wx:if="{{item.productInfo.attrInfo}}">{{item.productInfo.attrInfo.suk}}</view>
+            </view>
+            <!-- <view class='abstract textoverflow'>{{item.caption}}</view> -->
+            <view class='price' wx:if="{{item.productInfo.attrInfo}}">￥{{item.productInfo.attrInfo.price}}</view>
+            <view class='price' wx:else>￥{{item.productInfo.price}}</view>
+            <view class='buynum'>
+              <view class='minus {{minusStatus}}' bindtap='numDescClick' data-index="{{index}}">-</view>
+              <view class='num'>{{item.cart_num}}</view>
+              <view class='add active' bindtap='numAddClick' data-index="{{index}}">+</view>
+            </view>
           </view>
         </view>
       </view>
-
-      <view bindtap='remove' data-index="{{index}}" class='innerDel'>删除</view>
-    </view>
-
-
-  </block>
-</scroll-view>
-<view class='bottom' wx:if="{{cartItems.length>0}}">
-  <view class='bottommsg'>
-    <view class='bottommsgleft'>
-      <checkbox bindtap='allSelect' checked="{{isAllSelect}}" />
-      <text class='selecttext'>全选({{selNum}})</text>
-    </view>
-  <text class='selectprice {{selNum==0? "active" :" "}}'>
-      <block>合计 </block>
-      <block style='font-weight: bold;'>￥{{selPrice}}</block>
-    </text>
+    </block>
   </view>
-  <view class='buybtn {{selNum==0?"active" :" "}}' bindtap='buy'>结算</view>
-</view>
+
+
+
+
+
+  <!-- 失效页面 -->
+  <view class='fail-list' wx:if="{{cartInvalid.length > 0}}">
+    <view class='title-bar flex'>
+      <text class='line'></text>
+      <text class='txt'>失效商品</text>
+      <text class='line'></text>
+    </view>
+    <view class='fail-item flex' wx:for="{{cartInvalid}}">
+      <view class='pro-img'>
+        <image src='{{url}}{{item.productInfo.image}}'></image>
+      </view>
+      <view class='pro-infos flex'>
+        <view class='title'>{{item.productInfo.store_name}}</view>
+        <view class='pro-price' wx:if="{{item.productInfo.attrInfo}}">
+          <text>￥</text>{{item.productInfo.attrInfo.price}}</view>
+        <view class='pro-price' wx:else>
+          <text>￥</text>{{item.productInfo.price}}</view>
+      </view>
+      <view class='del-btn' data-id="{{item.id}}" bindtap="cartDel">删除</view>
+    </view>
+  </view>
+  <view style='height:120rpx;'></view>
+  <view class='foot'>
+    <view class='pay-wrapper flex' hidden='{{foothidden}}'>
+      <view class='left-wrapper flex'>
+        <view class='all-select' bindtap="allChecked">
+          <label class="checkbox">
+            <checkbox value="Boolean" checked="{{isAllSelect}}" />
+          </label>
+        </view>
+        <view class='txt'>全选</view>
+        <view class='count-num'>
+          <text>合计:</text>￥{{countmoney}}
+        </view>
+      </view>
+      <navigator class='flex' hover-class="none" url="/pages/order-confirm/order-confirm?id={{cartIdsStr}}">
+        <view class='pay-btn'>结算({{cartNum}})</view>
+      </navigator>
+    </view>
+    <view class='delete-wrapper flex'>
+      <view class='left-wrapper flex'>
+        <view class='all-select' bindtap="allChecked">
+          <label class="checkbox">
+            <checkbox value="Boolean" checked="{{isAllSelect}}" />
+          </label>
+        </view>
+        <view class='txt'>全选</view>
+      </view>
+      <view class='right-wrapper' style='padding-right:0'>
+        <!-- <view class='collection-btn' bindtap='collectAll'>移入收藏</view> -->
+        <view class='pay-btn' bindtap='cartDelAll' style='float:right'>删除({{cartNum}})</view>
+      </view>
+    </view>
+  </view>
+</form>

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/loading/loading",
+    "pages/buy/index",
     "pages/index/index",
     "pages/list/list",
     "pages/AddList/AddList",
@@ -25,7 +26,7 @@
     "pages/BrowseRecord/BrowseRecord",
     "pages/login/login",
     "pages/class/index",
-    "pages/buy/index",
+    
     "pages/load/load"
   ],
   "window": {

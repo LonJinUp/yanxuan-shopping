@@ -1,6 +1,298 @@
+.head {
+  z-index: 99;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 0 30rpx;
+  color: #BBBBBB;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width:100%;
+  height:100rpx;
+  background:rgba(255,255,255,1);
+}
+.head .btn{
+  color: #010101;
+  display: flex;
+  align-items: center;
+}
+
+.car-list {
+  position: relative;
+  margin-top: 100rpx;
+  background-color: #fff;
+}
+
+.car-list .list-item {
+  position: relative;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #eee;
+  min-height: 222rpx;
+}
+
+.select-btn {
+  width: 83rpx;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-btn checkbox .wx-checkbox-input {
+  border-radius: 50%;
+}
+
+.select-btn checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  color: #fff !important;
+  border: 1px solid #000;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.picture {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.picture image {
+  width: 100%;
+  height: 100%;
+}
+
+.pro-info {
+  width: 425rpx;
+  margin: 0 20rpx;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.pro-info .pro-title {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -moz-line-clamp: 2;
+  overflow: hidden;
+  color: #262626;
+}
+
+.pro-info .pro-des {
+  font-size: 24rpx;
+  color: #ababab;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pro-info .pro-price {
+  font-size: 38rpx;
+  color: #ff3d3d;
+}
+
+.pro-info .pro-price text {
+  font-size: 25rpx;
+}
+
+.count-wrapper {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  width: 160rpx;
+  height: 47rpx;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  align-items: center;
+}
+
+.count-wrapper text{
+  flex: 1;
+  text-align: center;
+  height: 100%;
+  font-size: 36rpx;
+  color: #454545;
+  line-height: 37rpx;
+}
+
+.count-wrapper .num {
+  flex: initial;
+  width: 66rpx;
+  color: #333;
+  font-size: 28rpx;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  line-height: 47rpx;
+  text-align: center;
+}
+
+.disabled {
+  color: #ccc !important;
+}
+
+.fail-list .title-bar {
+  width: 100%;
+  height: 118rpx;
+  align-items: center;
+  color: #aaa;
+  justify-content: center;
+}
+
+.fail-list .title-bar .line {
+  width: 70rpx;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.fail-list .title-bar .txt {
+  margin: 0 35rpx;
+}
+
+.fail-item {
+  position: relative;
+  padding: 20rpx;
+  background-color: #fff;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+}
+
+.fail-item .pro-img, .fail-item .pro-img image {
+  width: 185rpx;
+  height: 185rpx;
+}
+
+.fail-item .pro-infos {
+  width: 495rpx;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.fail-item .pro-infos .title {
+  color: #777;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -moz-line-clamp: 2;
+  overflow: hidden;
+}
+
+.fail-item .pro-infos .price {
+  font-size: 38rpx;
+  color: #999;
+}
+
+.fail-item .pro-infos .price text {
+  font-size: 25rpx;
+}
+
+.fail-item .del-btn {
+  position: absolute;
+  right: 20rpx;
+  bottom: 30rpx;
+  width: 130rpx;
+  height: 50rpx;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 50rpx;
+  border: 1px solid #ff3d3d;
+  font-size: 24rpx;
+  color: #ff3d3d;
+  border-radius: 3px;
+}
+
+.foot {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+}
+
+.foot .all-select {
+  width: 87rpx;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.foot .all-select  checkbox .wx-checkbox-input {
+  border-radius: 50%;
+}
+
+.foot .all-select checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  color: #fff !important;
+  border: 1px solid #000;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.foot .count-num {
+  margin-left: 75rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(0,0,0,1);
+}
+
+.foot .count-num>text {
+  color: #000;
+}
+
+.foot .pay-btn {
+  text-align: center;
+  line-height: 120rpx;
+  color: #fff;
+  width:260rpx;
+  height:100%;
+background:linear-gradient(90deg,rgba(255,27,28,1),rgba(255,72,22,1),rgba(254,121,16,1),rgba(239,92,7,1));
+}
+
+.foot .left-wrapper {
+  flex: 1;
+  align-items: center;
+}
+
+.delete-wrapper {
+  align-items: center;
+  height: 100%;
+}
+
+.delete-wrapper .right-wrapper {
+  width: 370rpx;
+  padding-right: 20rpx;
+  justify-content: space-between;
+}
+
+.delete-wrapper .right-wrapper .collection-btn {
+  width: 175rpx;
+  height: 65rpx;
+  text-align: center;
+  line-height: 65rpx;
+  color: #ff3d3d;
+  border: 1px solid #ff3d3d;
+  border-radius: 3px;
+}
+
+.delete-wrapper .right-wrapper  .delete-btn {
+  width: 175rpx;
+  height: 65rpx;
+  text-align: center;
+  line-height: 65rpx;
+  color: #999;
+  border: 1px solid #999;
+  border-radius: 3px;
+}
+
+/* xin */
 page {
   font-family: [PingFangSC];
-  background: #f4f4f4;
+  /* background: #f4f4f4; */
   height: 100%;
 
   /* padding-top: 20rpx; */
@@ -47,7 +339,7 @@ view {
   font-weight: bold;
 }
 
-.shoppingCartMain .shoppingCartMainList {
+.shoppingCartMainList{
   height: 220rpx;
   background: #fff;
   border-bottom: 1rpx solid #bbbbbb;
@@ -287,7 +579,7 @@ checkbox {
   margin-left: 27rpx;
   display: block;
   /* padding-left: 27rpx; */
-  line-height:200rpx; 
+  line-height:120rpx; 
   width: 50rpx;
 }
 

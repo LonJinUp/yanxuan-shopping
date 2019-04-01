@@ -37,12 +37,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "商品详情",
-					"pathName": "pages/SecondaryPage/product/index",
+					"pathName": "pages/product/index",
 					"query": "id=1",
 					"scene": null
 				},
