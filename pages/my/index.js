@@ -40,12 +40,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(globalData)
+    app.setUserInfo();
     var that=this;
     that.setData({
-      UserPic: globalData.data.avatarUrl,
-      UserName: globalData.data.nickName,
-      id: globalData.data.uid,
+      UserPic: globalData.UserLogo,
+      UserName: globalData.UserName,
+      id: globalData.uid,
     })
 
   },

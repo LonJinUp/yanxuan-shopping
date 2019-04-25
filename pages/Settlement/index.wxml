@@ -1,27 +1,29 @@
 <!-- Address information -->
 <view class='Address'>
-<block wx:if='{{Address}}'>
-  <view class='left'>
-    <view class='top'>
-      <view class='name'>
-        <text>收件人</text>
-        <text>老王</text>
-      </view>
-      <view class='phone'>
-        18534573722
-      </view>
-    </view>
-    <view class='bottom'>北京市  北京市  大兴区  西红门地区  嘉悦广场8号楼88</view>
-  </view>
-  <view class='right'>
-    <image src='../../images/prev.png'></image>
-  </view>
-  </block>
-  <block wx:else>
-    <view class='add-Address' bindtap='Address'>
+
+  <block wx:if="{{addressInfo.length < 1}}">
+    <view class='add-Address' bindtap='getAddress'>
       你还没有地址,点击添加
     </view>
   </block>
+  <block wx:else>
+    <view class='left' bindtap='getAddress'>
+      <view class='top'>
+        <view class='name'>
+          <text>收件人</text>
+          <text>{{addressInfo.real_name}}</text>
+        </view>
+        <view class='phone'>
+          {{addressInfo.phone}}
+        </view>
+      </view>
+      <view class='bottom'>{{addressInfo.province}} {{addressInfo.city}}{{addressInfo.district}} {{addressInfo.detail}}</view>
+    </view>
+    <view class='right'>
+      <image src='../../images/prev.png'></image>
+    </view>
+  </block>
+
 </view>
 <!-- Address information end -->
 <view class='border'></view>
@@ -29,44 +31,47 @@
 <view class='Product-list'>
   <view class='product'>
     <view class='title'>商品清单</view>
-    <view class='content'>
+    <view class='content' wx:for="{{cartInfo}}">
       <view class='left'>
-        <image src='../../images/shanchu/content.png'></image>
+        <image src='{{url}}{{item.productInfo.attrInfo.image}}' wx:if="{{item.productInfo.attrInfo}}"></image>
+        <image src='{{url}}{{item.productInfo.image}}' wx:else></image>
       </view>
       <view class='right'>
-        <view class='name'>Converse Chuck 70 拼色 粉紫绿橙 紫丁香全球限量款</view>
+        <view class='name'>{{item.productInfo.store_name}}</view>
         <view class='size'>
-          <text>经典款 | 40码</text>
+          <text wx:if="{{item.productInfo.attrInfo}}">{{item.productInfo.attrInfo.suk}}</text>
         </view>
         <view class='price'>
-          <text>￥300</text>
-          <text>x1</text>
+          <text wx:if="{{item.productInfo.attrInfo}}">￥{{item.productInfo.attrInfo.price}}</text>
+          <text>x{{item.cart_num}}</text>
         </view>
       </view>
     </view>
   </view>
-  
+
 </view>
 <!-- Product list end -->
 <view class='border'></view>
 <!-- coupon -->
-<view class='coupon'>
+<view class='coupon' wx:if="{{!seckillId && !BargainId  && !combinationId}}">
   <view class='left'>优惠券</view>
   <view class='right'>
-    <view class='choose {{coupon==true?"":"active"}}'>{{coupon==true?"请选择优惠券":"暂无优惠券"}}</view>
+    <view class='choose {{coupon==true?"":"active"}}'bindtap='getCoupon' wx:if="{{couponId}}">满{{couponInfo.use_min_price}}减{{couponInfo.coupon_price}}</view>
+    <view class='choose' bindtap='getCoupon' wx:else>选择优惠券</view>
     <image src='../../images/prev.png'></image>
   </view>
 </view>
+
 <!-- coupon end -->
 <view class='border'></view>
 <!-- message -->
 <view class='message'>
   <view class='left'>商品总额</view>
-  <view class='right'>￥996.00</view>
+  <view class='right'>￥{{totalPrice}}</view>
 </view>
 <view class='message'>
   <view class='left'>运费</view>
-  <view class='right'>￥000.00</view>
+  <view class='right'>￥{{priceGroup.storePostage}}</view>
 </view>
 <view class='message'>
   <view class='left'>优惠</view>
@@ -78,8 +83,40 @@
 <view class='invoice'>
   <view class='left'>开具发票</view>
   <view class='right'>
-   <text>不开发票</text>
+    <text>不开发票</text>
     <image src='../../images/prev.png'></image>
+  </view>
+</view>
+<view class='payment-select'>
+  <view class='message'>
+    <view class='left'>支付方式</view>
+    <view class='right'></view>
+  </view>
+  <view class='warapper'>
+    <view class='item '>
+      <radio-group>
+        <label class='radio-wrapper' wx:for="{{cartArr}}" bindtap="radioChange" data-value="{{item.value}}">
+          <view class='left-wrapper flex'>
+            <view class='iconfont {{item.icon}}'></view> {{item.name}}
+          </view>
+          <radio value="{{index}}" wx:if="{{item.value == payType}}" checked='checked'></radio>
+          <radio value="{{index}}" wx:else></radio>
+          <!-- 其他布局代码 -->
+        </label>
+      </radio-group>
+      <!-- <view class='left-wrapper'>微信支付</view>
+      <view class='right-wrapper flex'>
+        <view class='checked-btn'>
+          <radio-group bindchange="radioChange" >
+            <label>
+                <radio value="{{index}}"></radio>
+                <view>{{item.name}}</view>
+                    
+            </label>   
+          </radio-group>
+        </view>
+      </view> -->
+    </view>
   </view>
 </view>
 <!-- invoice end -->
@@ -88,8 +125,12 @@
 <view class='pay'>
   <view class='left'>
     <text>应付</text>
-    <text>￥998</text>
+    <text>￥{{totalPrice}}</text>
   </view>
-  <view class='right'>微信支付</view>
+  <view class='right'>
+    <form bindsubmit="subOrder" report-submit='true'>
+      <button class='submit-btn right' formType="submit">立即结算</button>
+    </form>
+  </view>
 </view>
 <!-- pay end -->

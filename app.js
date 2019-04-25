@@ -11,11 +11,14 @@ App({
   
   },
   globalData: {
+    UserLogo:"",
+    UserName:"",
     routineStyle: '#ffffff',
     uid: null,
     openPages: '',
     spid: 0,
     urlImages: '',
+    openid:'',
     url: 'https://vc.extouz.com'
   },
  

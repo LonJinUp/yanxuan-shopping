@@ -18,7 +18,7 @@
     <view>待支付</view>
     <view>
       <text>还需支付 </text>
-      <text>￥<text style='font-weight:600;font-size:26rpx'>200</text></text>
+      <text>￥<text style='font-weight:600;font-size:26rpx'>{{ordercon.pay_price}}</text></text>
     </view>
   </view>
 </view>
@@ -29,10 +29,10 @@
 <view class='Address'>
   <view class='title'>收货地址</view>
   <view class='name'>
-    <view class='left'>张小北</view>
-    <view class='right'>1865738462</view>
+    <view class='left'>{{ordercon.real_name}}</view>
+    <view class='right'>{{ordercon.user_phone}}</view>
   </view>
-  <view class='content'>北京市北京市大兴区西红门地区嘉悦广场8号楼88</view>
+  <view class='content'>{{ordercon.user_address}}</view>
 </view>
 <!-- Address end -->
 <view class='border'></view>
@@ -40,33 +40,60 @@
 <view class='Product-list'>
   <view class='product'>
     <view class='title'>商品信息</view>
-    <view class='content'>
-      <view class='left'>
-        <image src='../../images/shanchu/content.png'></image>
-      </view>
-      <view class='right'>
-        <view class='name'>Converse Chuck 70 拼色 粉紫绿橙 紫丁香全球限量款</view>
-        <view class='size'>
-          <text>经典款 | 40码</text>
+    <!-- 发 -->
+    <block wx:for="{{ordercon.cartInfo}}">
+      <navigator class='content' hover-class='none' wx:if="{{!ordercon.seckill_id && !ordercon.bargain_id && !ordercon.combination_id}}" url='/pages/product-con/index?id={{item.productInfo.id}}'>
+
+        <view class='left'>
+          <image src='{{url}}{{item.productInfo.image}}'></image>
         </view>
-        <view class='price'>
-          <text>￥300</text>
-          <text>x1</text>
+        <view class='right'>
+          <view class='name'>{{item.productInfo.store_name}}</view>
+          <view class='size'>
+            <text>{{item.productInfo.store_name}}</text>
+          </view>
+          <view class='price'>
+            <text>￥{{item.productInfo.price}}</text>
+            <text>x{{item.cart_num}}</text>
+          </view>
         </view>
-      </view>
-    </view>
+      </navigator>
+      <navigator hover-class='none' wx:else>
+        <view class='item flex'>
+          <image src='{{url}}{{item.productInfo.image}}'></image>
+          <view class='pro-info'>
+            <view class='title'>{{item.productInfo.store_name}}</view>
+            <view class='res'>{{item.productInfo.store_name}}</view>
+            <view class='price'>
+              <text>￥</text>{{item.productInfo.price}}
+              <text class='count'>x{{item.cart_num}}</text>
+            </view>
+          </view>
+          <navigator wx:if="{{ordercon._status._type==3}}" hover-class="none" url='/pages/comment-con/comment-con?unique={{item.unique}}' class='assess-btn'>评价</navigator>
+          <view wx:elif="{{ordercon._status._type==4}}" class='assess-btn off'>已评价</view>
+        </view>
+      </navigator>
+    </block>
+    <!-- end -->
+
+
+
+
+
+
+
   </view>
-  
+
 </view>
 <!-- Product list end -->
 <!-- message -->
 <view class='message'>
   <view class='left'>运费</view>
-  <view class='right'>￥000.00</view>
+  <view class='right'>￥{{ordercon.pay_postage}}</view>
 </view>
 <view class='message'>
   <view class='left'>还需支付</view>
-  <view class='right' style='color:#FF1010'>￥ 996.00</view>
+  <view class='right' style='color:#FF1010'>￥ {{ordercon.pay_price}}</view>
 </view>
 <view class='border'></view>
 <view class='message'>
@@ -75,21 +102,27 @@
 </view>
 <view class='border'></view>
 <view class='message2'>
-   <text>订单编号:</text>
-   <text>201983838383838</text>
+  <text>订单编号:</text>
+  <text>{{ordercon.order_id}}</text>
 </view>
 <view class='message2'>
-   <text>下单时间:</text>
-   <text>2019.10.20</text>
+  <text>下单时间:</text>
+  <text>{{ordercon.add_time}}</text>
 </view>
 <!-- message end -->
 <view style="width:100%;height:150rpx"></view>
 <!-- buy-btn -->
 <view class='buy-bottom'>
-  <view class='right'>支付 {{clock}}</view>
-  <view class='left'>取消订单</view>
+  <!-- <view class='right'>支付 {{clock}}</view> -->
+   <view class='right' data-id="{{ordercon.order_id}}" bindtap='checkPay' wx:if="{{ordercon._status._type==0}}">立即付款</view>
+  <navigator class='left' wx:elif="{{ordercon._status._type==1}}" hover-class="none" url='/pages/refund-page/refund-page?orderId={{ordercon.order_id}}'>申请退款</navigator>
+
+  <navigator class='left' wx:if="{{ordercon._status._type==2 && ordercon.delivery_type == 'express'}}" hover-class="none" url='/pages/logistics/logistics?orderId={{ordercon.order_id}}'>查看物流</navigator>
+
+  <view wx:if="{{ordercon._status._type==2}}" class='left' bindtap='confirmOrder' data-uni='{{ordercon.order_id}}'>确认收货</view>
+
+  <view wx:if="{{ordercon._status._type==4 || ordercon._status._type==0}}" class='left' bindtap='delOrder' data-uni='{{ordercon.order_id}}'>删除订单</view>
+  <navigator class='left' wx:if="{{!ordercon.seckill_id && !ordercon.bargain_id && !ordercon.combination_id && (ordercon._status._type==3||ordercon._status._type==4)}}" hover-class="none" bindtap='goIndex'>再次购买
+  </navigator>
 </view>
 <!-- buy btn-end -->
-
-
-

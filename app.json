@@ -1,9 +1,12 @@
 {
   "pages": [
     "pages/loading/loading",
+    "pages/list/list",
+    "pages/orders-list/orders-list",
+    "pages/order-list/order-list",
+    "pages/SignatureDish/SignatureDish",
     "pages/buy/index",
     "pages/index/index",
-    "pages/list/list",
     "pages/AddList/AddList",
     "pages/material/material",
     "pages/my/index",
@@ -26,8 +29,9 @@
     "pages/BrowseRecord/BrowseRecord",
     "pages/login/login",
     "pages/class/index",
-    
-    "pages/load/load"
+    "pages/load/load",
+    "pages/AddAddress/AddAddress",
+    "pages/coupon-status/coupon-status"
   ],
   "window": {
     "backgroundTextStyle": "light",

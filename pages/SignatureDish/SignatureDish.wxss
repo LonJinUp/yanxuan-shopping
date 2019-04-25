@@ -1,0 +1,7 @@
+/* pages/SignatureDish/SignatureDish.wxss */
+.banner{
+  width: 100%;
+  height: 330rpx;
+  background: greenyellow;
+  position: relative;
+}

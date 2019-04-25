@@ -31,7 +31,6 @@ Page({
       { price: 0 },
       { unique: "" },
       { stock: 0 },
-      { ot_price: 0 },
     ],
     reply: [],
     replyCount: 0,
@@ -63,6 +62,11 @@ Page({
     this.setData({
       cid: e.currentTarget.dataset.index,
       cindex: e.currentTarget.dataset.current,
+    })
+  },
+  BackIndex:function(e){
+    wx.switchTab({
+      url: '../index/index'
     })
   },
   // end
@@ -183,7 +187,7 @@ Page({
           var price = "productSelect.price";
           var unique = "productSelect.unique";
           var stock = "productSelect.stock";
-          var ot_price ="productSelect.ot_price"
+        
           that.setData({
             storeInfo: res.data.data.storeInfo,
             storeKeyWord: res.data.data.storeInfo.keyword.split(","),
@@ -196,13 +200,11 @@ Page({
             collect: res.data.data.storeInfo.userCollect,
             [image]: res.data.data.storeInfo.image,
             [stock]: res.data.data.storeInfo.stock,
-            [ot_price]: res.data.data.storeInfo.ot_price,
+           
             [store_name]: res.data.data.storeInfo.store_name,
             [price]: res.data.data.storeInfo.price,
             [unique]: ''
-          })
-          console.log(that.data.productSelect)
-          
+          }) 
           WxParse.wxParse('description', 'html', that.data.description,that, 0);
         } else {
           wx.showToast({
@@ -273,12 +275,13 @@ Page({
   //购买
   goOrder: function () {
     var that = this;
+    console.log(that.data.status)
     if (that.data.productSelect.unique != '') {
       var header = {
         'content-type': 'application/x-www-form-urlencoded',
       };
       wx.request({
-        url: app.globalData.url + '/routine/auth_api/now_buy?uid=' + app.globalData.uid,
+        url: app.globalData.url + '/routine/auth_api/now_buy?uid='+app.globalData.uid,
         method: 'GET',
         data: {
           productId: that.data.id,
@@ -289,7 +292,7 @@ Page({
         success: function (res) {
           if (res.data.code == 200) {
             wx.navigateTo({ //跳转至指定页面并关闭其他打开的所有页面（这个最好用在返回至首页的的时候）
-              url: '/pages/order-confirm/order-confirm?id=' + res.data.data.cartId
+              url: '/pages/Settlement/index?id=' + res.data.data.cartId
             })
           } else {
             wx.showToast({
@@ -301,9 +304,9 @@ Page({
         }
       })
     } else {
-      // wxh.footan(that);
       that.setData({
-        ShowShare: true
+        ShowShare: true,
+        status: 3
       })
     }
   },
@@ -405,18 +408,17 @@ Page({
           var price = "productSelect.price";
           var unique = "productSelect.unique";
           var stock = "productSelect.stock";
-          var ot_price ="productSelect.ot_price"
           that.setData({
             [image]: that.data.productValue[index]['image'],
             [price]: that.data.productValue[index]['price'],
             [unique]: that.data.productValue[index]['unique'],
             [stock]: that.data.productValue[index]['stock'],
-            [ot_price]: that.data.productValue[index]['ot_price'],
           })
         }
       }
     }
   },
+
   in_array_two: function (arr1, arr2) {
     if (arr1.sort().toString() == arr2.sort().toString()) {
       return true;
@@ -440,14 +442,14 @@ Page({
   //选择商品属性，点击确定按钮
   subBuy: function (e) {
     console.log(e);
-    wx.request({
-      url: app.globalData.url + '/routine/auth_api/get_form_id?uid=' + app.globalData.uid,
-      method: 'GET',
-      data: {
-        formId: e.detail.formId
-      },
-      success: function (res) { }
-    })
+    // wx.request({
+    //   url: app.globalData.url + '/routine/auth_api/get_form_id?uid=' + app.globalData.uid,
+    //   method: 'GET',
+    //   data: {
+    //     formId: e.detail.formId
+    //   },
+    //   success: function (res) { }
+    // })
     var that = this;
     if (that.data.num > that.data.productSelect.stock) {
       wx.showToast({
@@ -458,14 +460,18 @@ Page({
       that.setData({
         num: that.data.productSelect.stock,
       })
+      console.log("库存不足")
     } else if (that.data.productAttr.length > 0 && that.data.productSelect.unique == '') {
       wx.showToast({
         title: '请选择属性',
         icon: 'none',
         duration: 2000
       })
+      console.log("请选择属性")
     } else {
+      console.log("走到这一行")
       if (that.data.status == 1) {
+        console.log("走到这一行1")
         var attrValueData = [];
         for (var i in that.data.productValue) {
           if (that.data.productValue[i].unique == that.data.productSelect.unique) {
@@ -474,11 +480,9 @@ Page({
                 var sukArr = that.data.productValue[i].suk.split(',');
                 if (that.in_array(that.data.productAttr[j].attr_values[k], sukArr)) {
                   attrValueData.push(that.data.productAttr[j].attr_name + ':' + that.data.productAttr[j].attr_values[k]);
-
                 }
               }
             }
-
           }
         }
         that.setData({
@@ -536,7 +540,7 @@ Page({
           success: function (res) {
             if (res.data.code == 200) {
               wx.navigateTo({ //跳转至指定页面并关闭其他打开的所有页面（这个最好用在返回至首页的的时候）
-                url: '/pages/order-confirm/order-confirm?id=' + res.data.data.cartId
+                url: '/pages/Settlement/index?id=' + res.data.data.cartId
               })
             } else {
               wx.showToast({
@@ -624,6 +628,11 @@ Page({
     wx.switchTab({
       url: '/pages/buy/index'
     });
+  },
+  
+  //加入清单
+  AddList:function(e){
+    
   },
 
   /**

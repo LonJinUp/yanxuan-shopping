@@ -80,7 +80,7 @@
           <text>合计:</text>￥{{countmoney}}
         </view>
       </view>
-      <navigator class='flex' hover-class="none" url="/pages/order-confirm/order-confirm?id={{cartIdsStr}}">
+      <navigator class='flex' hover-class="none" url="/pages/Settlement/index?id={{cartIdsStr}}">
         <view class='pay-btn'>结算({{cartNum}})</view>
       </navigator>
     </view>

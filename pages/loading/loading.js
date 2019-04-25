@@ -58,8 +58,11 @@ Page({
                 },
                 success: function (res) {
                   console.log(res)
-                  app.globalData.data=res.data.data
+                  app.globalData.data=res.data.data;
+                  app.globalData.UserName = res.data.data.nickName;
+                  app.globalData.UserLogo = res.data.data.avatarUrl;
                   app.globalData.uid = res.data.data.uid;
+                  app.globalData.openid = res.data.data.routine_openid
                   if (app.globalData.openPages != '' && app.globalData.openPages != undefined) {//跳转到指定页面
                     wx.navigateTo({
                       url: app.globalData.openPages

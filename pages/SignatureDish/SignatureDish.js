@@ -1,38 +1,18 @@
-// pages/class/index.js
+// pages/SignatureDish/SignatureDish.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    //左侧数据
-    leftitems: [
-      { id: "1", name: "美保健妆" },
-      { id: "2", name: "保保健健" }
-    ],
-    //控制左侧active
-    curNav: 1,
-  },
-  //左侧点击处理
-   switchRightTab: function (e) {
-     // 获取item项的id，和数组的下标值 
-     let id = e.target.dataset.id
-     // 把点击到的某一项，设为当前index 
-     this.setData({
-        curNav:id,
-     })
-   },
 
-  //软键盘点击搜索
-  inputTyping:function(e){
-    let search=e.detail.value;
-    console.log(search)
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+
   },
 
   /**
@@ -76,10 +56,11 @@ Page({
   onReachBottom: function () {
 
   },
+
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
-  },
+  }
 })

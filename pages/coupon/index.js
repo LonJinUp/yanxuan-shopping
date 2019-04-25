@@ -1,100 +1,99 @@
-// pages/SecondaryPage/OrderDetails/index.js
+var app = getApp();
+// pages/coupon/coupon.js
+// var fileData = require('../../utils/util.js'); //暴露的接口；
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    //选项卡
-    currentTab: 0,
-    //优惠券
-    couponData:[
-      { id: 0, DescriptionShow: false },
-      { id: 1, DescriptionShow:false},
-    ]
-  },
+    url: app.globalData.urlImages,
+    _active: 0,
+    headerArray: ['全部', '未使用', '已使用', '已过期'],
+    couponArray: "",
+    userstatus: "",
+    title: "正在加载中..."
+    
+
+  }, 
   //查看优惠券详情
-  Description:function(e){
+  Description: function (e) {
     console.log(e);
     let show = e.currentTarget.dataset.descriptionshow
     let index = e.currentTarget.dataset.index
-    this.data.couponData[index].DescriptionShow = !this.data.couponData[index].DescriptionShow
+    this.data.couponArray[index].DescriptionShow = !this.data.couponArray[index].DescriptionShow
     this.setData({
-      couponData: this.data.couponData
+      couponArray: this.data.couponArray
     })
   },
-  //滑动切换
-  swiperTab: function (e) {
-    var that = this;
-    that.setData({
-      currentTab: e.detail.current
+  headertaps: function (e) {
+    this.setData({
+      _active: e.target.dataset.idx
     });
   },
-  //点击切换
-  clickTab: function (e) {
-    var that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
-      return false;
-    } else {
-      that.setData({
-        currentTab: e.target.dataset.current
-      })
-    }
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+  
+    app.setUserInfo();
+    var header = {
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+    var that = this;
+    //flag = 1{0表示正常，1未使用，2已使用，3已过期，4新增券}
+    var flag = this.data._active;
+    setTimeout(function () {
+      wx.request({
+        url: app.globalData.url + '/routine/auth_api/get_use_coupons?uid=' + app.globalData.uid,
+        data: { types: 0 },
+        method: 'GET',
+        header: header,
+        success: function (res) {
+          if (res.data.code == 200) {
+            that.setData({
+              couponArray: res.data.data,
+              title: "没有数据了",
+              loadinghidden: true
+            })
+          } else {
+            that.setData({
+              couponArray: [],
+              title: "没有数据了",
+              loadinghidden: false
+            })
+          }
+        }
+      })
+    }, 1000)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  headertap: function (e) {
+    var that = this;
+    // console.log(e);
+    var header = {
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+    var $type = e.target.dataset.idx
+    wx.request({
+      url: app.globalData.url + '/routine/auth_api/get_use_coupons?uid=' + app.globalData.uid,
+      data: { types: $type },
+      method: 'GET',
+      header: header,
+      success: function (res) {
+        if (res.data.code == 200) {
+          that.setData({
+            couponArray: res.data.data,
+            title: "没有数据了",
+            loadinghidden: true,
+            _active: $type
+          })
+        } else {
+          that.setData({
+            couponArray: [],
+            title: "没有数据了",
+            loadinghidden: false,
+            _active: ''
+          })
+        }
+      }
+    })
   }
+
+
+
 })
+
+

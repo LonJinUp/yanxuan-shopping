@@ -1,68 +1,29 @@
 <!--pages/SecondaryPage/ Address/index.wxml-->
-<block wx:if="{{Add_Address==false}}">
-  <block wx:if='{{Address==false}}'>
+
+<!-- <block wx:if='{{Address==true}}'>
     <view class='Address-none'></view>
     <view class='Address-none-title'>您还没有添加收货地址～</view>
-  </block>
-  <block wx:if='{{Address==true}}'>
-    <view class='Address'>
-      <view class='name'>
-        <view>老王</view>
-        <view>185637462363</view>
-      </view>
-      <view class='content'>
-        <view>北京市北京市大兴区西红门地区家悦广场3号楼1103</view>
-        <view>收货时间不限</view>
-      </view>
-      <view class='bottom'>
-        <image src='../../images/bianji-2.png'></image>
-        <image src='../../images/shanchu-2.png'></image>
-      </view>
+  </block> -->
+
+<block wx:for="{{addressArray}}">
+  <view class='Address'data-id="{{item.id}}" bindtap='goOrder'>
+    <view class='name'>
+      <view>{{item.real_name}}</view>
+      <view>{{item.phone}}</view>
     </view>
-  </block>
-  <!-- bottom btn -->
-  <view class='bottom-btn'>
-    <view class='left'>使用微信地址</view>
-    <view class='right' bindtap='Add_Address'>添加地址</view>
+    <view class='content'>
+      <view>{{item.province}}{{item.city}}{{item.district}}{{item.detail}}</view>
+      <view>收货时间不限</view>
+    </view>
+    <view class='bottom'>
+      <image src='../../images/bianji-2.png' data-id="{{item.id}}" bindtap='editAddress'></image>
+      <image src='../../images/shanchu-2.png' data-id="{{item.id}}" bindtap='delAddress'></image>
+    </view>
   </view>
-  <!-- bottom btn end -->
 </block>
-<block wx:if='{{Add_Address==true}}'>
-  <!-- add Address -->
-  <view class='border'></view>
-
-  <view class='Add-Address'>
-    <text>收货人</text>
-    <input type='text' placeholder='请输入收件人'></input>
-  </view>
-
-  <view class='Add-Address'>
-    <text>手机号</text>
-    <input type='number' placeholder='请输入手机号' maxlength='11'></input>
-  </view>
-
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-    <view class="picker">
-      <text>收货时间</text>
-      <text>{{array[index]}}</text>
-      <image src='../../images/prev.png'></image>
-    </view>
-  </picker>
-
-  <view class='border'></view>
-  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-    <view class="picker">
-      <text>所在地区</text>
-      <text>{{region[0]}} {{region[1]}} {{region[2]}}</text>
-      <image src='../../images/prev.png'></image>
-    </view>
-  </picker>
-
-  <view class='Add-Address'>
-    <text>详细地址</text>
-    <input type='text' placeholder='请输入详细收货地址'></input>
-  </view>
-
-  <view class='save-Address' bindtap='SaveAddress'>保存</view>
-  <!-- add Address end -->
-</block>
+<!-- bottom btn -->
+<view class='bottom-btn'>
+  <view class='left'  bindtap='getWxAddress'>使用微信地址</view>
+  <view class='right' bindtap='addAddress'>添加地址</view>
+</view>
+<!-- bottom btn end -->

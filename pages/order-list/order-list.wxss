@@ -1,4 +1,4 @@
-/* pages/SecondaryPage/coupon/index.wxss */
+/* pages/order-list/order-list.wxss */
 /* remind */
 page{
   width: 100%;
@@ -40,7 +40,7 @@ page{
   margin-top: 10rpx;
 }
 .swiper-tab-item{
-  width: 30%; 
+  width: 25%; 
   font-size:26rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;
@@ -135,12 +135,10 @@ swiper{
   width:100%;
   height:45rpx;
   margin-top: 40rpx;
-  text-align: center;
   
 }
 .coupon-list .items .left .title{
-  height:22rpx;
-  text-align: center;
+  height:21rpx;
   font-size:22rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;

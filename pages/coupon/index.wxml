@@ -1,58 +1,48 @@
 <!--pages/SecondaryPage/coupon/index.wxml-->
 <view class='remind'>
-  <image src='../../../images/tanhao.png'></image>
+  <image src='../../images/tanhao.png'></image>
   <text>秒杀、商家直发商品暂不支持使用优惠券</text>
 </view>
 
 <!-- tab -->
 <view class="swiper-tab">
-  <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0">
-    <text bindtap="clickTab" data-current="0">未使用(1)</text>
-    <view class="bottom-border {{currentTab==0?'active':''}}"></view>
-  </view>
-  <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1">
-    <text bindtap="clickTab" data-current="1">已使用(2)</text>
-    <view class="bottom-border {{currentTab==1?'active':''}}"></view>
-  </view>
-  <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2">
-    <text bindtap="clickTab" data-current="2">已失效(2)</text>
-    <view class="bottom-border {{currentTab==2?'active':''}}"></view>
-  </view>
+   <block wx:for="{{headerArray}}">
+      <view data-idx='{{index}}' class='swiper-tab-item {{_active==index?"active":""}}' bindtap='headertap'>{{item}}
+       <view class="bottom-border {{_active==index?'active':''}}"></view>
+      </view>
+   </block>     
 </view>
 
-<swiper current="{{currentTab}}" duration="300" bindchange="swiperTab">
-  <swiper-item>
+<!-- <swiper current="{{_active}}" data-idx="{{_active}}"  duration="300"> -->
+  <!-- <swiper-item> -->
     <view class='coupon-list'>
-      <block wx:for="{{couponData}}">
+      <block wx:for="{{couponArray}}">
         <view class='items'>
-          <view class='left active'>
+          <view class='left {{(item.status==1||item.status==2)?"":"active"}}'>
             <view class='val'>
               <text>￥</text>
-              <text>50</text>
+              <text>{{item.coupon_price}}</text>
             </view>
-            <view class='title'>满500可用</view>
+            <view class='title'>满{{item.use_min_price}}可用</view>
           </view>
           <view class='right active'>
             <view class='title'>
-              <view class='active'>通用券</view>
-              <view>全场通用</view>
+              <view class='active'>{{item._msg}}</view>
+              <view>{{item.coupon_title}}</view>
             </view>
-            <view class='time'>2019/02/22  23:23  已失效</view>
+            <view class='time'>{{item.add_time}}至{{item.end_time}}使用</view>
             <view class='details' bindtap='Description' data-DescriptionShow='{{item.DescriptionShow}}' data-index="{{index}}">
               <text>详细信息</text>
-              <image src='../../../images/bottom.png' class='{{item.DescriptionShow==true?"rotateRight":""}}'></image>
+              <image src='../../images/bottom.png' class='{{item.DescriptionShow==true?"rotateRight":""}}'></image>
             </view>
           </view>
           <view class='Description {{item.DescriptionShow==true?"show":""}}'>一个订单只能使用一张优惠券；秒杀商品不支持使用满减优惠券。</view>
         </view>
       </block>
+
+
     </view>
-  </swiper-item>
-  <swiper-item>
-   
-  </swiper-item>
-  <swiper-item>
-    
-  </swiper-item>
-</swiper>
+    <view class='loading flex'><text class='loadingpic iconfont icon-jiazaizhong' hidden='{{loadinghidden}}'></text><text>{{title}}</text></view>
+ 
+<!-- </swiper> -->
 <!-- tab end -->

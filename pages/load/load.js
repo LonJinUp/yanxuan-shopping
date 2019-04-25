@@ -29,6 +29,8 @@ Page({
             },
             success: function (res) {
               app.globalData.data=res.data
+              app.globalData.UserName = res.data.nickName;
+              app.globalData.UserLogo = res.data.avatarUrl;
               app.globalData.uid = res.data.data.uid;
               app.globalData.openid = res.data.data.routine_openid;
               if (app.globalData.openPages != '' && app.globalData.openPages != undefined) {//跳转到指定页面

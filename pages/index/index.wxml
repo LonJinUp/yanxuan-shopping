@@ -1,7 +1,3 @@
-<!--index.wxml-->
-<!--pages/index/index.wxml-->
-
-<!-- 登录后 首页全部内容 -->
 <!-- swiper -->
 <swiper indicator-dots next-margin='100rpx' circular autoplay='true' interval='3000' duration='600' style='background:#fff;padding-top:10rpx'>
   <block wx:for='{{banner}}'>
@@ -65,46 +61,48 @@
 <!-- Notice end -->
 
 <!-- activity -->
-<view class='activity'>
-  <view class='activity-item activity-background-1'>
-    <view class='activity-top'>
-      <view class='left'>
-        <view class='top-title'>
-          <text class='title'>限时秒杀</text>
-          <text class='iconfont right-icon'></text>
-        </view>
-        <view class='title-small'>每日爆款限时抢</view>
-      </view>
-      <view class='right'>
-        <text class='iconfont time'></text>
-        <text class='clock'>{{clock}}</text>
-      </view>
-    </view>
-    <view class='content'>
-      <navigator url="../SecondaryPage/product/index?id={{Spike.id}}" class='left' style='background:url("{{Spike.image}}")no-repeat center center/100% 100%'>
-        <view class='Triangle'></view>
-      </navigator>
-      <view class='right'>
-        <view class='share'>
-          <text>分享赚</text>
-          <image src='../../images/share.png'></image>
-        </view>
-        <view class='title'>{{Spike.title}}</view>
-        <view class='Description'>{{Spike.info}}</view>
-        <view class='price'>
-          <view class='left-price'>
-            <text>秒杀价:</text>
-            <text>￥{{Spike.price}}</text>
-          </view>
-          <view class='right-price'>
-            <text>赚:</text>
-            <text>￥200</text>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
 
+<view class='activity'>
+  <block wx:if="{{Spike}}">
+    <view class='activity-item activity-background-1'>
+      <view class='activity-top'>
+        <view class='left'>
+          <view class='top-title'>
+            <text class='title'>限时秒杀</text>
+            <text class='iconfont right-icon'></text>
+          </view>
+          <view class='title-small'>每日爆款限时抢</view>
+        </view>
+        <view class='right'>
+          <text class='iconfont time'></text>
+          <text class='clock'>{{clock}}</text>
+        </view>
+      </view>
+      <view class='content'>
+        <navigator url="../SecondaryPage/product/index?id={{Spike.id}}" class='left' style='background:url("{{Spike.image}}")no-repeat center center/100% 100%'>
+          <view class='Triangle'></view>
+        </navigator>
+        <view class='right'>
+          <view class='share'>
+            <text>分享赚</text>
+            <image src='../../images/share.png'></image>
+          </view>
+          <view class='title'>{{Spike.title}}</view>
+          <view class='Description'>{{Spike.info}}</view>
+          <view class='price'>
+            <view class='left-price'>
+              <text>秒杀价:</text>
+              <text>￥{{Spike.price}}</text>
+            </view>
+            <view class='right-price'>
+              <text>赚:</text>
+              <text>￥200</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
 
   <view class='activity-item activity-background-3'>
     <view class='activity-top'>

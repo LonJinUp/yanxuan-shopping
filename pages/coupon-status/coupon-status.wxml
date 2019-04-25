@@ -1,0 +1,30 @@
+<!--pages/coupon-status/coupon-status.wxml-->
+    <view class='coupon-list'>
+      <block wx:for="{{couponArray}}">
+        <view class='items' bindtap='getCouponUser' data-id="{{item.id}}">
+          <view class='left {{item.is_use?"":"active"}}'>
+            <view class='val'>
+              <text>￥</text>
+              <text>{{item.coupon_price}}</text>
+            </view>
+            <view class='title'>满{{item.use_min_price}}可用</view>
+          </view>
+          <view class='right active'>
+            <view class='title'>
+              <view class='active'>{{item.is_use?"已领取":"可领取"}}</view>
+              <view>{{item.coupon_title}}</view>
+            </view>
+            <view class='time'></view>
+            <view class='details' bindtap='Description' data-DescriptionShow='{{item.DescriptionShow}}' data-index="{{index}}">
+              <text>详细信息</text>
+              <image src='../../images/bottom.png' class='{{item.DescriptionShow==true?"rotateRight":""}}'></image>
+            </view>
+          </view>
+          <view class='Description {{item.DescriptionShow==true?"show":""}}'>一个订单只能使用一张优惠券；秒杀商品不支持使用满减优惠券。</view>
+        </view>
+      </block>
+
+     
+
+    </view>
+

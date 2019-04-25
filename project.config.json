@@ -13,7 +13,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.1",
-	"appid": "wx45dcf9f2312d499f",
+	"appid": "wxbb53ae105735a06b",
 	"projectname": "yanxuan-shopping",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -51,6 +51,20 @@
 					"name": "邀请",
 					"pathName": "pages/load/load",
 					"query": "invite_uid=111",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/Address/index",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "订单部分",
+					"pathName": "pages/orders-list/orders-list",
+					"query": "uid=1",
 					"scene": null
 				}
 			]

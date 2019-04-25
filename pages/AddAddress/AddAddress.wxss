@@ -1,0 +1,273 @@
+/* pages/AddAddress/AddAddress.wxss */
+
+/* Address */
+
+.Address {
+  width: 690rpx;
+  height: 300rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rpx 0rpx 16rpx 0rpx rgba(0, 0, 0, 0.05);
+  border-radius: 10rpx;
+  margin: 0 auto;
+  margin-top: 40rpx;
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  overflow: hidden;
+}
+
+.Address .name {
+  width: 100%;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40rpx;
+}
+
+.Address .name view:first-child {
+  font-size: 30rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+}
+
+.Address .name view:last-child {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(110, 110, 110, 1);
+}
+
+.Address .content {
+  width: 100%;
+  height: 100rpx;
+  border-bottom: 1rpx solid rgba(238, 238, 238, 1);
+  margin-top: 30rpx;
+}
+
+.Address .content view:first-child {
+  width: 100%;
+  min-height: 22rpx;
+  font-size: 22rpx;
+  font-family: PingFangSC-Light;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 1);
+}
+
+.Address .content view:last-child {
+  width: 100%;
+  font-size: 22rpx;
+  font-family: PingFangSC-Light;
+  font-weight: 300;
+  color: rgba(187, 187, 187, 1);
+  margin-top: 15rpx;
+}
+
+.Address .bottom {
+  width: 100%;
+  height: 38rpx;
+  margin-top: 27rpx;
+}
+
+.Address .bottom image:first-child {
+  width: 38rpx;
+  height: 38rpx;
+  float: right;
+}
+
+.Address .bottom image:last-child {
+  width: 38rpx;
+  height: 38rpx;
+  float: right;
+  margin-right: 70rpx;
+}
+
+/* Address end */
+
+/* Add-Address */
+
+.border {
+  width: 100%;
+  height: 16rpx;
+  background: rgba(246, 246, 246, 1);
+}
+
+.Add-Address {
+  width: 100%;
+  height: 100rpx;
+  background: rgba(255, 255, 255, 1);
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid rgba(246, 246, 246, 1);
+}
+
+.Add-Address text {
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  min-width: 120rpx;
+}
+
+.Add-Address input {
+  width: 300rpx;
+  height: 100%;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(187, 187, 187, 1);
+  margin-left: 70rpx;
+}
+
+.picker {
+  width: 100%;
+  height: 100rpx;
+  background: rgba(255, 255, 255, 1);
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid rgba(246, 246, 246, 1);
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  position: relative;
+}
+
+.picker text:first-child {
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 1);
+  min-width: 120rpx;
+}
+
+.picker text:nth-child(2) {
+  font-size: 30rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+  margin-left: 70rpx;
+}
+
+.picker image {
+  width: 12rpx;
+  height: 22rpx;
+  position: absolute;
+  top: 40rpx;
+  right: 30rpx;
+}
+
+.save-Address {
+  width: 690rpx;
+  height: 72rpx;
+  background: linear-gradient(-30deg, rgba(251, 91, 34, 1), rgba(255, 16, 16, 1));
+  border-radius: 36rpx;
+  position: fixed;
+  bottom: 38rpx;
+  left: 30rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  line-height: 72rpx;
+}
+
+/* Add-Address end */
+
+/* new */
+
+.information {
+  width: 100%;
+  min-height: 400rpx;
+  background-color: #fff;
+  display: block;
+}
+
+.information-li {
+  height: 100rpx;
+  padding: 0 20rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+
+.information-li label, .cashNum label {
+  width: 170rpx;
+  display: inline-block;
+  font-size:30rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(0,0,0,1);
+  line-height:100rpx;
+}
+
+.information-li input, .cashNum input {
+  width: 100%;
+  height: 100%;
+}
+
+.placeholder {
+  color: #ccc;
+}
+
+.but {
+  width: 710rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background-color: #f84426;
+  color: #fff;
+  font-size: 32rpx;
+  margin-top: 70rpx;
+}
+
+.areas {
+  color: #808080;
+  display: inline-block;
+  width: 510rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.map {
+  float: right;
+  font-size: 45rpx;
+  color: #f14233;
+}
+
+.area {
+  width: 137rpx !important;
+}
+
+.default {
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 20rpx;
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+
+.duihao {
+  height: 45rpx;
+  line-height: 45rpx;
+  text-align: center;
+  border-radius: 50%;
+  border: 1rpx solid #dedede;
+  display: inline-block;
+  width: 45rpx;
+  font-size: 30rpx;
+  color: #fff;
+  margin-right: 21rpx;
+}
+
+.active {
+  background-color: #f84426;
+}

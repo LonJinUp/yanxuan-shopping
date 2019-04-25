@@ -136,7 +136,7 @@
 }
 .product .content .right .name{
   width:517rpx;
-  height:64rpx;
+  min-height:64rpx;
   font-size:26rpx;
   font-family:PingFangSC-Light;
   font-weight:300;
@@ -159,9 +159,10 @@
 }
 .product .content .right .price {
   width:100%;
-  height:19rpx;
+  height:atuo;
   display: flex;
   justify-content: space-between;
+  margin-top: 10rpx;
 }
 .product .content .right .price text{
   font-size:26rpx;
@@ -226,8 +227,8 @@
   padding: 0 28rpx;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1rpx solid rgba(246,246,246,1);
+  justify-content: space-between; 
+  border-bottom: 1px solid rgba(246,246,246,1);
 }
 .message .left{
   font-size:26rpx;
@@ -322,3 +323,75 @@
 
 }
 /* pay end */
+
+.payment-select {
+  margin-top: 20rpx;
+  background-color: #fff;
+  font-size: 26rpx;
+}
+
+.payment-select .warapper {
+
+}
+
+.payment-select .warapper .item .radio-wrapper {
+  width:100%;
+  height:85rpx;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(246,246,246,1);
+  box-sizing:border-box;
+  padding:0 20rpx;
+
+}
+
+.payment-select .warapper .left-wrapper {
+  align-items: center;
+  color: #565656;
+}
+
+.payment-select .warapper .left-wrapper .iconfont {
+  font-size: 40rpx;
+  margin-right: 15rpx;
+}
+
+.icon-weixinzhifu {
+  color: #41b035;
+}
+
+.icon-yuezhifu {
+  color: #fc992c;
+}
+
+.icon-wallet {
+  color: #31abe5;
+}
+
+.icon-dianpu {
+  color: #f23d26;
+}
+
+radio .wx-radio-input {
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+radio .wx-radio-input.wx-radio-input-checked {
+  border: 1px solid #ff3d3d !important;
+  background: #ff3d3d !important;
+}
+
+radio .wx-radio-input.wx-radio-input-checked::before {
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}

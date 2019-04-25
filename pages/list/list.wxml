@@ -1,18 +1,30 @@
 <!--pages/list/list.wxml-->
-<block wx:if='{{list}}'>
-  <view class='no-list'></view>
-  <view class='title'>你还没有商品清单</view>
-  <view class='content'>创建商品清单，可以一次推荐多个商品哦</view>
-  <view class='add-btn'>创建商品清单</view>
+
+<block  wx:if='{{list}}'>
+  <view class='border'></view>
+  <view class='list-items' wx:for="{{ListData}}">
+    <view class='items-title'>
+      <text></text>
+      <text>{{item.theme}}</text>
+    </view>
+    <view class='list'>
+      <view class="items {{item.product_images==''?'active':''}}"></view>
+      <view class='right'>共1件 <text>></text></view>
+    </view>
+    <view class='list-bottom'>
+      <view class='delete' data-id="{{item.id}}" bindtap='DeleteList'></view>
+      <view class='right'>
+        <view class='recommend'>推荐</view>
+        <view class='share'>分享</view>
+      </view>
+    </view>
+    <view class='border'></view>
+  </view>
 </block>
 
 <block wx:else>
-  <view class='border'></view>
-  <view class='list-items'>
-    <view class='items-title'>
-      <text></text>
-      <text>运动装备</text>
-    </view>
-    <view class='list'></view>
-  </view>
+  <view class='no-list'></view>
+  <view class='title'>你还没有商品清单</view>
+  <view class='content'>创建商品清单，可以一次推荐多个商品哦</view>
+  <navigator class='add-btn' hover-class='none' url='../AddList/AddList'>创建商品清单</navigator>
 </block>

@@ -7,43 +7,47 @@
     <view class='title'>连续签到相应的天数可以获取优惠券~</view>
     <view class='content'>
       <view class='first'>
-        <view class='items active'>1</view>
-        <view class='border active'></view>
-        <view class='items active'>2</view>
-        <view class='border active'></view>
-        <view class='items yes'>
+        <view class='items {{sign_count>=1?"active":""}}'>1</view>
+        <view class='border {{sign_count>=2?"active":""}}'></view>
+        <view class='items {{sign_count>=2?"active":""}}'>2</view>
+        <view class='border {{sign_count>=3?"active":""}}'></view>
+        <view class='items {{sign_count>=3?"yes":"no"}}'>
           <view class='value'>¥5</view>
         </view>
-        <view class='border active'></view>
-        <view class='items active'>4</view>
+        <view class='border {{sign_count>=4?"active":""}}'></view>
+        <view class='items {{sign_count>=4?"active":""}}'>4</view>
       </view>
       <view class='second'>
-        <view class='border'></view>
+        <view class='border {{sign_count>=5?"active":""}}'></view>
       </view>
       <view class='first'>
-        <view class='items'>8</view>
-        <view class='border'></view>
-        <view class='items'>7</view>
-        <view class='border'></view>
-        <view class='items'>6</view>
-        <view class='border'></view>
-        <view class='items no'>
+        <view class='items {{sign_count>=8?"active":""}}'>8</view>
+        <view class='border {{sign_count>=8?"active":""}}'></view>
+        <view class='items {{sign_count>=7?"active":""}}'>7</view>
+        <view class='border {{sign_count>=7?"active":""}}'></view>
+        <view class='items {{sign_count>=6?"active":""}}'>6</view>
+        <view class='border {{sign_count>=6?"active":""}}'></view>
+        <view class='items {{sign_count>=5?"yes":"no"}}'>
           <view class='value'>¥5</view>
         </view>
       </view>
       <view class='third'>
-        <view class='border'></view>
+        <view class='border {{sign_count>=9?"active":""}}'></view>
       </view>
       <view class='first'>
-        <view class='items'>9</view>
-        <view class='border'></view>
-        <view class='items no'>
+        <view class='items {{sign_count>=9?"active":""}}'>9</view>
+        <view class='border {{sign_count>=10?"active":""}}'></view>
+        <view class='items {{sign_count>=10?"yes":"no"}}'>
           <view class='value'>￥30</view>
         </view>
       </view>
     </view>
-
-    <view class='check'>签到</view>
+    <block wx:if="{{is_sign==0}}">
+      <view class='check' bindtap='check'>签到</view>
+    </block>
+    <block wx:else>
+      <view class='check' bindtap='check' style='background:#BBBBBB'>已连续签到{{sign_count}}天</view>
+    </block>
   </view>
 </view>
 <!-- banner end -->

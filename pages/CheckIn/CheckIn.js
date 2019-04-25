@@ -1,4 +1,5 @@
 // pages/CheckIn/CheckIn.js
+var app = getApp();
 Page({
 
   /**
@@ -12,7 +13,60 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.setUserInfo();
+    this.CheckStatus();
+  },
 
+//签到
+  check:function(e){
+      var that = this;
+      console.log(e);
+      var header = {
+        'content-type': 'application/x-www-form-urlencoded',
+      };
+      wx.request({
+        url: app.globalData.url + '/routine/auth_api/user_sign?uid=' + app.globalData.uid,
+        method: 'GET',
+        header: header,
+        success: function (res) {
+          if (res.data.code == 200) {
+            wx.showToast({
+              title: '签到成功',
+              icon: 'success',
+              duration: 2000
+            });
+            that.CheckStatus();
+          } else {
+            wx.showToast({
+              title:"已签到",
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        }
+      })
+  },
+
+  CheckStatus:function(){
+    var that = this;
+    var header = {
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+    wx.request({
+      url: app.globalData.url + '/routine/auth_api/sign_in?uid=' + app.globalData.uid,
+      method: 'post',
+      header: header,
+      success: function (res) {
+        if (res.data.code == 200) {
+          that.setData({
+            sign_count: res.data.data.sign_count,
+            is_sign: res.data.data.is_sign 
+          })
+        } else {
+          console.log(2);
+        }
+      }
+    })
   },
 
   /**

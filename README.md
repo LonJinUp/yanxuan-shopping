@@ -24,12 +24,17 @@
      * ---AllOrders 全部订单
      * ---PendingPayment 待付款
      * ---coupon 优惠券
-     * ---Address 地址管理（添加地址）
+     * ---Address 地址管理
+     * ---AddAddress 添加地址
      * ---QRCode 我的信息（上传二维码，下级可以看到）
      * ---MyProfessor 我的导师
      * ---CheckIn 签到
      * ---material 素材库
      * ---list 商品清单
+     * ---AddList 添加商品清单
+     * ---SignatureDish店主推荐
+     * ---orders-list订单详情
+     * ---coupon-status优惠券状态/领取优惠券/选择优惠券
 
 
 

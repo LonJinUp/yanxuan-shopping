@@ -1,0 +1,64 @@
+<view class='menu flex'>
+  <view class='item {{nowstatus == "" ? "on" : ""}}' data-show="" bindtap="statusClick">
+    <text>全部订单</text>
+    <view class="bottom-border {{nowstatus==''?'active':''}}"></view>
+  </view>
+  <view class='item {{nowstatus == "0" ? "on" : ""}}' data-show="0" bindtap="statusClick">
+    <text>待付款</text>
+    <view class='bottom-border {{nowstatus == "0" ? "active" : ""}}'></view>
+  </view>
+  <view class='item {{nowstatus == "1" ? "on" : ""}}' data-show="1" bindtap="statusClick">
+    <text>待发货</text>
+    <view class="bottom-border {{nowstatus==1?'active':''}}"></view>
+  </view>
+  <!-- <view class='item {{nowstatus == "2" ? "on" : ""}}'  data-show="2" bindtap="statusClick">
+    <text>待收货</text>
+    <view class="bottom-border {{nowstatus==2?'active':''}}"></view>
+  </view> -->
+</view>
+
+
+<view class='orders-list'>
+
+  <block wx:for="{{orderlist}}">
+      <view class='product'>
+        <view class='title'>
+          <view class='left'>订单编号:{{item.order_id}}</view>
+          <view class='right active' wx:if="{{item._status._type == 0}}">待付款</view>
+          <view class='right active' wx:if="{{item._status._type == 1}}">待发货</view>
+          <view class='right active' wx:if="{{item._status._type == 2}}">待收货</view>
+          <!-- <view class='right active' wx:if="{{item._status._type == 0}}">待付款</view> -->
+        </view>
+        <block wx:for="{{item.cartInfo}}">
+           <view class='content'>
+          <view class='left'>
+            <image src='{{url}}{{item.productInfo.image}}'></image>
+          </view>
+          <view class='right'>
+            <view class='name'>{{item.productInfo.store_name}}</view>
+            <view class='size'>
+              <text>{{item.productInfo.store_name}}</text>
+            </view>
+            <view class='price'>
+              <text>￥{{item.productInfo.price}}</text>
+              <text>x{{item.cart_num}}</text>
+            </view>
+          </view>
+        </view>
+        </block>
+        <view class='content-text'>
+          <text>商品总计:</text>
+          <text>￥{{item.pay_price}}</text>
+        </view>
+        <view class='commission'>
+          <navigator class='items' url='../LoadPay/index' hover-class='none'wx:if="{{item._status._type == 0}}">支付</navigator>
+           <navigator hover-class="none" url='/pages/orders-con/orders-con?order_id={{item.order_id}}' wx:elif="{{item._status._type == 1}}" class='items'>查看详情</navigator>
+          <navigator hover-class="none" url='/pages/logistics/logistics?orderId={{item.order_id}}' wx:elif="{{item._status._type == 2 && item.delivery_type == 'express'}}" class='items'>查看物流</navigator>
+        </view>
+      </view>
+  </block>
+
+  <view class='loading flex'>
+    <icon class='iconfont icon-jiazaizhong loadingpic' hidden='{{hidden}}'></icon>{{title}}
+  </view>
+</view>

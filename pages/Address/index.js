@@ -1,105 +1,216 @@
 // pages/SecondaryPage/ Address/index.js
+//控制没地址时候显示
+
+var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    //控制没地址时候显示
-    Address:true,
+    Address: true,
     //添加地址
-    Add_Address:false,
-    //派送日期选择
-    index: '0',
-    array: ['任意时间', '工作日', '非工作日',],
-    //地区选择
-    region: ['北京', '北京市', '朝阳区'],
-    customItem: '全部'
+    Add_Address: false,
+    _num: '',
+    cartId: '',
+    pinkId: '',
+    couponId: '',
+    addressArray: []
   },
-  //派送时间
-  bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      index: e.detail.value
-    })
-  },
-  //地址选择
-  bindRegionChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      region: e.detail.value
-    })
-  },
-  
-  //添加地址
-  Add_Address:function(e){
-    var that=this;
-    that.setData({
-      Add_Address:true
-    })
-  },
-
-  //保存地址
-  SaveAddress:function(e){
-    var that = this;
-    that.setData({
-      Add_Address: false
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    app.setUserInfo();
+    if (options.cartId) {
+      this.setData({
+        cartId: options.cartId,
+        pinkId: options.pinkId,
+        couponId: options.couponId,
+      })
+    }
+    this.getAddress();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getWxAddress: function () {
+    var that = this;
+    wx.authorize({
+      scope: 'scope.address',
+      success: function (res) {
+        wx.chooseAddress({
+          success: function (res) {
+            console.log(res);
+            var addressP = {};
+            addressP.province = res.provinceName;
+            addressP.city = res.cityName;
+            addressP.district = res.countyName;
+            wx.request({
+              url: app.globalData.url + '/routine/auth_api/edit_user_address?uid=' + app.globalData.uid + '&openid=' + app.globalData.openid,
+              method: 'POST',
+              data: {
+                address: addressP,
+                is_default: 1,
+                real_name: res.userName,
+                post_code: res.postalCode,
+                phone: res.telNumber,
+                detail: res.detailInfo,
+                id: 0
+              },
+              success: function (res) {
+                if (res.data.code == 200) {
+                  wx.showToast({
+                    title: '添加成功',
+                    icon: 'success',
+                    duration: 1000
+                  })
+                  that.getAddress();
+                }
+              }
+            })
+          },
+          fail: function (res) {
+            if (res.errMsg == 'chooseAddress:cancel') {
+              wx.showToast({
+                title: '取消选择',
+                icon: 'none',
+                duration: 1500
+              })
+            }
+          },
+          complete: function (res) { },
+        })
+      },
+      fail: function (res) {
+        console.log(res);
+      },
+      complete: function (res) { },
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  getAddress: function () {
+    var that = this;
+    var header = {
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+    wx.request({
+      url: app.globalData.url + '/routine/auth_api/user_address_list?uid=' + app.globalData.uid,
+      method: 'POST',
+      header: header,
+      success: function (res) {
+        if (res.data.code == 200) {
+          that.setData({
+            addressArray: res.data.data
+          })
+          for (var i in res.data.data) {
+            if (res.data.data[i].is_default) {
+              that.setData({
+                _num: res.data.data[i].id
+              })
+            }
+          }
+        }
+      }
+    })
   },
+  addAddress: function () {
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+    var cartId = this.data.cartId;
+    var pinkId = this.data.pinkId;
+    var couponId = this.data.couponId;
+    this.setData({
+      cartId: '',
+      pinkId: '',
+      couponId: '',
+    })
+    wx.navigateTo({ //跳转至指定页面并关闭其他打开的所有页面（这个最好用在返回至首页的的时候）
+      url: '/pages/AddAddress/AddAddress?cartId=' + cartId + '&pinkId=' + pinkId + '&couponId=' + couponId
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  goOrder: function (e) {
+    var id = e.currentTarget.dataset.id;
+    var cartId = '';
+    var pinkId = '';
+    var couponId = '';
+    if (this.data.cartId && id) {
+      cartId = this.data.cartId;
+      pinkId = this.data.pinkId;
+      couponId = this.data.couponId;
+      this.setData({
+        cartId: '',
+        pinkId: '',
+        couponId: '',
+      })
+      wx.navigateTo({ //跳转至指定页面并关闭其他打开的所有页面（这个最好用在返回至首页的的时候）
+        url: '/pages/Settlement/index?id=' + cartId + '&addressId=' + id + '&pinkId=' + pinkId + '&couponId=' + couponId
+      })
+    }
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  delAddress: function (e) {
+    var id = e.currentTarget.dataset.id;
+    var that = this;
+    var header = {
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+    wx.request({
+      url: app.globalData.url + '/routine/auth_api/remove_user_address?uid=' + app.globalData.uid,
+      method: 'GET',
+      header: header,
+      data: {
+        addressId: id
+      },
+      success: function (res) {
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '删除成功',
+            icon: 'success',
+            duration: 1000,
+          })
+          that.getAddress();
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 1000,
+          })
+        }
+      }
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  editAddress: function (e) {
+    var cartId = this.data.cartId;
+    var pinkId = this.data.pinkId;
+    var couponId = this.data.couponId;
+    this.setData({
+      cartId: '',
+      pinkId: '',
+      couponId: '',
+    })
+    wx.navigateTo({ //跳转至指定页面并关闭其他打开的所有页面（这个最好用在返回至首页的的时候）
+      url: '/pages/AddAddress/AddAddress?id=' + e.currentTarget.dataset.id + '&cartId=' + cartId + '&pinkId=' + pinkId + '&couponId=' + couponId
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  activetap: function (e) {
+    var id = e.target.dataset.idx;
+    var that = this;
+    var header = {
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+    wx.request({
+      url: app.globalData.url + '/routine/auth_api/set_user_default_address?uid=' + app.globalData.uid,
+      method: 'GET',
+      header: header,
+      data: {
+        addressId: id
+      },
+      success: function (res) {
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '设置成功',
+            icon: 'success',
+            duration: 1000,
+          })
+          that.setData({
+            _num: id
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 1000,
+          })
+        }
+      }
+    })
   }
 })
